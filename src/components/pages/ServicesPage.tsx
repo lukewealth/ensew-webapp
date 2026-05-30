@@ -2,9 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Globe, Truck, Factory, Warehouse, Briefcase, BarChart, Shield, Zap, ArrowRight } from "lucide-react";
+import { Globe, Truck, Factory, Warehouse, Briefcase, BarChart, ArrowRight } from "lucide-react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 export const metadata = {
@@ -127,12 +128,13 @@ const ServicesPage = () => {
                     </div>
                   </div>
 
-                  <button 
+                  <Link 
+                    href="/contact"
                     onClick={() => addToRecentlyViewed(service.title)}
                     className="flex items-center gap-2 text-gold font-poppins text-sm font-bold tracking-widest uppercase hover:gap-4 transition-all"
                   >
                     Learn More <ArrowRight size={18} />
-                  </button>
+                  </Link>
                 </div>
                 
                 <div className="flex-1 relative group">
@@ -153,9 +155,9 @@ const ServicesPage = () => {
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-4xl font-montserrat font-extrabold text-white mb-8">Need a Custom Solution?</h2>
             <p className="text-lg text-on-surface-variant mb-12">Our experts are ready to design a framework tailored to your specific industrial or logistics requirements.</p>
-            <button className="gold-button px-16 py-5 text-navy font-poppins text-sm font-bold tracking-widest rounded-xl uppercase">
+            <Link href="/contact" className="gold-button px-16 py-5 text-navy font-poppins text-sm font-bold tracking-widest rounded-xl uppercase inline-block">
               Schedule Consultation
-            </button>
+            </Link>
           </div>
         </section>
       </main>

@@ -2,9 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "Our Projects & Case Studies",
@@ -26,7 +27,7 @@ const projects = [
     challenge: "Inefficient component sourcing causing 30-day production delays.",
     solution: "Centralized industrial supply framework and automated procurement.",
     results: "Delays reduced to 48 hours, 25% cost savings on critical parts.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?auto=format&fit=crop&q=80&w=800"
   },
   {
     name: "Offshore Energy Logistics",
@@ -58,7 +59,7 @@ const projects = [
     challenge: "Navigating complex ECOWAS trade regulations and customs barriers.",
     solution: "Strategic manufacturing representation and trade compliance.",
     results: "300% growth in trade volume for represented international brands.",
-    image: "https://images.unsplash.com/photo-1454165833767-027ffec9036a?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1522056615691-da7b8106c665?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
@@ -68,8 +69,14 @@ const ProjectsPage = () => {
       <Header />
       
       <main className="pt-20">
-        <section className="relative py-24 bg-surface border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-6 text-center">
+        <section className="relative py-24 bg-surface border-b border-white/10 overflow-hidden">
+          <div className="absolute inset-0 bg-navy/40 z-10 backdrop-blur-[1px]"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=2000" 
+            alt="Projects Hero" 
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          />
+          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -77,7 +84,7 @@ const ProjectsPage = () => {
             >
               Proven <span className="text-gold">Results</span>
             </motion.h1>
-            <p className="text-lg text-on-surface-variant max-w-2xl mx-auto uppercase tracking-widest font-poppins text-xs">
+            <p className="text-lg text-white max-w-2xl mx-auto uppercase tracking-widest font-poppins text-xs font-bold bg-navy/60 inline-block px-4 py-2 rounded-full">
               Delivering Excellence Across Complex Industrial Landscapes
             </p>
           </div>
@@ -123,9 +130,9 @@ const ProjectsPage = () => {
                     </div>
                   </div>
 
-                  <button className="flex items-center gap-2 text-gold font-poppins text-xs font-bold tracking-[0.2em] uppercase mt-auto group-hover:gap-4 transition-all">
+                  <Link href="/contact" className="flex items-center gap-2 text-gold font-poppins text-xs font-bold tracking-[0.2em] uppercase mt-auto group-hover:gap-4 transition-all">
                     View Case Study <ArrowRight size={14} />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}

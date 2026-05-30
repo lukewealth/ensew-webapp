@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Globe, Shield, TrendingUp, Users, ChevronRight, Play, CheckCircle } from "lucide-react";
@@ -17,7 +18,7 @@ const HomePage = () => {
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-navy/60 z-10 backdrop-blur-[2px]"></div>
             <img 
-              src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=2000" 
+              src="https://images.unsplash.com/photo-1574259392081-dbe3c19cd15e?auto=format&fit=crop&q=80&w=2000" 
               alt="Industrial Hero" 
               className="w-full h-full object-cover scale-105 animate-slow-zoom"
             />
@@ -40,9 +41,9 @@ const HomePage = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group">
+                <Link href="/contact" className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group">
                   Request Consultation <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
                 <button className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/5 transition-all border border-white/10">
                   <div className="bg-gold/20 p-2 rounded-full"><Play size={14} className="fill-gold text-gold" /></div> Watch Story
                 </button>
@@ -114,7 +115,7 @@ const HomePage = () => {
               >
                 <div className="absolute -inset-4 bg-gold/10 blur-3xl rounded-full"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1000" 
+                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000" 
                   alt="Operations" 
                   className="relative z-10 rounded-[3rem] border border-white/5 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
                 />
@@ -184,9 +185,9 @@ const HomePage = () => {
                 <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-4">Sectors</span>
                 <h2 className="text-4xl md:text-5xl font-montserrat font-extrabold text-white tracking-tight uppercase">Industries We Serve</h2>
               </div>
-              <button className="text-gold font-poppins text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
+              <Link href="/industries" className="text-gold font-poppins text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
                 View All Industries <ChevronRight size={16} />
-              </button>
+              </Link>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -196,12 +197,12 @@ const HomePage = () => {
                 { name: "Construction", img: "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800" },
                 { name: "Retail", img: "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&q=80&w=800" }
               ].map((ind, i) => (
-                <div key={i} className="group relative h-[400px] overflow-hidden rounded-3xl">
+                <Link href="/industries" key={i} className="group relative h-[400px] overflow-hidden rounded-3xl">
                   <img src={ind.img} alt={ind.name} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent flex flex-col justify-end p-8">
                     <h3 className="text-xl font-montserrat font-bold text-white uppercase tracking-widest group-hover:text-gold transition-colors">{ind.name}</h3>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -222,12 +223,12 @@ const HomePage = () => {
               Partner with ENSEW Services Limited today and experience the power of smart industrial solutions. Let&apos;s discuss how we can support your next project.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase shadow-2xl shadow-gold/20">
+              <Link href="/contact" className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase shadow-2xl shadow-gold/20">
                 Schedule Consultation
-              </button>
-              <button className="px-12 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase border border-white/10 hover:bg-white/5 transition-all">
+              </Link>
+              <Link href="/contact" className="px-12 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase border border-white/10 hover:bg-white/5 transition-all">
                 Get In Touch
-              </button>
+              </Link>
             </div>
           </div>
         </section>
