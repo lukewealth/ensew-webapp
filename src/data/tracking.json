@@ -1,0 +1,22 @@
+{
+  "shipments": [
+    {
+      "id": "ENS-9844-XZ",
+      "status": "In Transit",
+      "origin": "Port of Singapore",
+      "destination": "London Distribution Center",
+      "weight": "1,240 kg",
+      "pieces": "48 Units",
+      "service": "Priority",
+      "type": "Freight",
+      "expectedDelivery": "Oct 24, 2024",
+      "progress": 65,
+      "location": "Gulf of Aden",
+      "logs": [
+        { "date": "Oct 21, 2024, 14:22", "event": "Entered International Waters", "details": "Vessel ID: ENSEW-PEGASUS | Speed: 22 knots" },
+        { "date": "Oct 20, 2024, 11:05", "event": "Customs Documentation Verified", "details": "Regional Hub - Port of Salalah" },
+        { "date": "Oct 19, 2024, 08:30", "event": "Departed Origin Hub", "details": "Port of Singapore Terminal 2" }
+      ]
+    }
+  ]
+}

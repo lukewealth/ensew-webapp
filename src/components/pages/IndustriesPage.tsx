@@ -44,7 +44,7 @@ const IndustriesPage = () => {
               Sectors We <span className="text-gold">Empower</span>
             </motion.h1>
             <p className="text-lg text-on-surface-variant max-w-2xl mx-auto uppercase tracking-widest font-poppins text-xs">
-              Tailored Expertise for the World's Most Demanding Industries
+              Tailored Expertise for the World&apos;s Most Demanding Industries
             </p>
           </div>
         </section>
@@ -79,7 +79,7 @@ const IndustriesPage = () => {
           <div className="max-w-4xl mx-auto px-6 text-center glass-card p-16 rounded-3xl">
             <h2 className="text-3xl font-montserrat font-bold text-white mb-6 uppercase tracking-widest">Industry-Specific Frameworks</h2>
             <p className="text-lg text-on-surface-variant leading-relaxed">
-              We don't believe in one-size-fits-all. Each sector has unique regulatory, technical, and logistical challenges. Our team designs frameworks that are specifically optimized for the unique demands of your industry.
+              We don&apos;t believe in one-size-fits-all. Each sector has unique regulatory, technical, and logistical challenges. Our team designs frameworks that are specifically optimized for the unique demands of your industry.
             </p>
           </div>
         </section>

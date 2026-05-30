@@ -1,17 +1,51 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, MessageSquare, Clock, Send } from "lucide-react";
-
-export const metadata = {
-  title: "Contact Us | Schedule a Consultation",
-  description: "Ready to scale your business operations? Contact ENSEW Services Limited for expert logistics, industrial supply, and strategic business partnerships.",
-};
+import { Mail, Phone, MapPin, MessageSquare, Clock, Send, CheckCircle, Loader2 } from "lucide-react";
+import GoogleMapComponent from "@/components/GoogleMap";
 
 const ContactPage = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    service: "Select a Service",
+    message: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/mail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: "", company: "", email: "", phone: "", service: "Select a Service", message: "" });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -93,32 +127,67 @@ const ContactPage = () => {
 
               {/* Contact Form */}
               <div className="md:col-span-2">
-                <form className="glass-card p-12 rounded-2xl border border-white/5 space-y-8">
+                <form onSubmit={handleSubmit} className="glass-card p-12 rounded-2xl border border-white/5 space-y-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
                       <label className="text-xs font-poppins font-bold text-on-surface-variant uppercase tracking-[0.2em]">Full Name</label>
-                      <input type="text" className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" placeholder="John Doe" />
+                      <input 
+                        type="text" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" 
+                        placeholder="John Doe" 
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-poppins font-bold text-on-surface-variant uppercase tracking-[0.2em]">Company Name</label>
-                      <input type="text" className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" placeholder="Acme Corp" />
+                      <input 
+                        type="text" 
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" 
+                        placeholder="Acme Corp" 
+                      />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
                       <label className="text-xs font-poppins font-bold text-on-surface-variant uppercase tracking-[0.2em]">Email Address</label>
-                      <input type="email" className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" placeholder="john@acme.com" />
+                      <input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" 
+                        placeholder="john@acme.com" 
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-poppins font-bold text-on-surface-variant uppercase tracking-[0.2em]">Phone Number</label>
-                      <input type="tel" className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" placeholder="+234 ..." />
+                      <input 
+                        type="tel" 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" 
+                        placeholder="+234 ..." 
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-xs font-poppins font-bold text-on-surface-variant uppercase tracking-[0.2em]">Service Needed</label>
-                    <select className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none appearance-none">
+                    <select 
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none appearance-none"
+                    >
                       <option>Select a Service</option>
                       <option>Import & Export</option>
                       <option>Industrial Supply</option>
@@ -130,11 +199,29 @@ const ContactPage = () => {
 
                   <div className="space-y-2">
                     <label className="text-xs font-poppins font-bold text-on-surface-variant uppercase tracking-[0.2em]">Your Message</label>
-                    <textarea rows={6} className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" placeholder="Tell us about your project requirements..."></textarea>
+                    <textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6} 
+                      className="w-full bg-navy/50 border border-white/10 rounded-lg p-4 text-white focus:border-gold transition-colors outline-none" 
+                      placeholder="Tell us about your project requirements..."
+                    ></textarea>
                   </div>
 
-                  <button className="gold-button w-full py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center justify-center gap-2">
-                    Send Message <Send size={18} />
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting || isSubmitted}
+                    className={`gold-button w-full py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center justify-center gap-2 transition-all ${isSubmitted ? 'bg-green-500!' : ''}`}
+                  >
+                    {isSubmitting ? (
+                      <>Processing <Loader2 className="animate-spin" size={18} /></>
+                    ) : isSubmitted ? (
+                      <>Message Sent <CheckCircle size={18} /></>
+                    ) : (
+                      <>Send Message <Send size={18} /></>
+                    )}
                   </button>
                 </form>
               </div>
@@ -142,14 +229,9 @@ const ContactPage = () => {
           </div>
         </section>
 
-        {/* Map Placeholder */}
-        <section className="h-[400px] w-full bg-surface-dim grayscale opacity-50 contrast-125">
-           <div className="w-full h-full flex items-center justify-center border-t border-white/10">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
-                <span className="text-white font-poppins font-bold tracking-widest uppercase">Lagos, Nigeria Headquarters</span>
-              </div>
-           </div>
+        {/* Real Google Map */}
+        <section className="h-[500px] w-full border-t border-white/10 relative overflow-hidden">
+           <GoogleMapComponent />
         </section>
       </main>
 
