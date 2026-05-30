@@ -10,25 +10,25 @@ const experts = [
   {
     name: "Dr. Adebayo Williams",
     role: "Chief Executive Officer",
-    image: "/images/team-1.jpeg",
+    image: "/images/ceo.jpeg",
     bio: "Visionary leader with 25+ years in global logistics and industrial trade across African markets."
   },
   {
     name: "Sarah Jenkins",
     role: "Chief Operations Officer",
-    image: "/images/team-2.jpeg",
+    image: "/images/team-3.jpeg",
     bio: "Supply chain expert specialized in optimizing multinational procurement and distribution networks."
   },
   {
     name: "Oluwaseun Bakare",
     role: "Director of Global Partnerships",
-    image: "/images/team-3.jpeg",
+    image: "/images/team-1.jpeg",
     bio: "Strategist focused on bridging Nigerian industrial opportunities with international investor standards."
   },
   {
     name: "Marcus Thorne",
     role: "Head of Industrial Sourcing",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
+    image: "/images/team-2.jpeg",
     bio: "Specialist in heavy machinery procurement and European-African manufacturing representation."
   }
 ];
