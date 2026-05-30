@@ -1,11 +1,13 @@
 import React from "react";
 import Skeleton from "@/components/Skeleton";
+import LoadingIllustration from "@/components/LoadingIllustration";
 
 export default function Loading() {
   return (
     <div className="flex flex-col min-h-screen bg-background pt-20">
       <div className="max-w-7xl mx-auto px-6 w-full py-24 space-y-12">
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <LoadingIllustration />
           <Skeleton variant="rectangular" width={200} height={20} className="mb-4" />
           <Skeleton variant="rectangular" width="60%" height={60} />
           <Skeleton variant="rectangular" width="40%" height={24} />

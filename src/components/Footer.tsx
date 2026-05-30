@@ -5,8 +5,11 @@ const Footer = () => {
   return (
     <footer className="w-full py-16 px-6 md:px-12 bg-surface-dim border-t border-white/10 mt-auto">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
-        <Link href="/" className="text-3xl font-montserrat font-extrabold text-on-surface">
-          ENSEW
+        <Link href="/" className="flex flex-col items-center gap-4">
+          <img src="/images/logo.jpeg" alt="ENSEW Logo" className="h-16 w-auto rounded-lg" />
+          <span className="text-3xl font-montserrat font-extrabold text-on-surface">
+            ENSEW
+          </span>
         </Link>
         
         <div className="flex flex-wrap justify-center gap-8 text-xs font-poppins tracking-widest uppercase">

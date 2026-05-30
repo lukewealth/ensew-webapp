@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Globe, Menu, X } from "lucide-react";
+import { Globe, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -27,79 +27,120 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMobileMenuOpen]);
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 transition-all duration-300 ease-in-out ${
-        isScrolled
-          ? "bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-xl"
+      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 transition-all duration-500 ease-in-out ${
+        isScrolled || isMobileMenuOpen
+          ? "bg-surface/90 backdrop-blur-2xl border-b border-white/5 shadow-2xl"
           : "bg-transparent"
       }`}
     >
       <div className="flex items-center gap-4">
-        <Link href="/" className="text-2xl font-montserrat font-extrabold tracking-tight text-on-surface">
-          ENSEW
+        <Link href="/" className="flex items-center gap-2">
+          <img src="/images/logo.jpeg" alt="ENSEW Logo" className="h-10 w-auto rounded" />
+          <span className="text-2xl font-montserrat font-extrabold tracking-tighter text-on-surface hidden sm:block">
+            ENSEW<span className="text-gold">.</span>
+          </span>
         </Link>
       </div>
 
-      <nav className="hidden md:flex gap-8">
+      {/* Desktop Nav */}
+      <nav className="hidden md:flex gap-10">
         {navLinks.map((link) => (
           <Link
             key={link.name}
             href={link.href}
-            className={`font-poppins text-xs tracking-widest uppercase transition-all duration-300 hover:text-gold ${
-              pathname === link.href
-                ? "text-gold border-b-2 border-gold pb-1"
-                : "text-on-surface-variant font-medium"
+            className={`font-poppins text-[10px] tracking-[0.2em] uppercase transition-all duration-300 relative group py-2 ${
+              pathname === link.href ? "text-gold" : "text-on-surface-variant hover:text-white"
             }`}
           >
             {link.name}
+            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gold transition-transform duration-300 origin-left ${pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}></span>
           </Link>
         ))}
       </nav>
 
-      <div className="flex items-center gap-4">
-        <Globe className="text-electric-blue cursor-pointer w-5 h-5" />
+      <div className="flex items-center gap-6">
+        <Globe className="hidden sm:block text-electric-blue cursor-pointer w-5 h-5 hover:text-gold transition-colors" />
         <Link
           href="/contact"
-          className="hidden md:block bg-navy px-6 py-2 text-on-surface font-poppins text-xs font-semibold rounded hover:opacity-90 active:scale-95 transition-all border border-white/10"
+          className="hidden md:flex items-center gap-2 bg-navy-light px-7 py-3 text-white font-poppins text-[10px] font-bold tracking-[0.1em] rounded-lg hover:bg-gold hover:text-navy active:scale-95 transition-all border border-white/10"
         >
-          GET IN TOUCH
+          GET IN TOUCH <ArrowRight size={14} />
         </Link>
+        
+        {/* Mobile Menu Button - Larger touch target for HIG/Material */}
         <button
-          className="md:hidden text-on-surface"
+          className="md:hidden text-on-surface p-2 -mr-2 flex items-center justify-center min-w-[44px] min-h-[44px]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
+      {/* Mobile Nav Overlay - Full screen for better UX */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-20 left-0 w-full bg-surface border-b border-white/10 p-6 flex flex-col gap-4 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 top-20 w-full h-[calc(100vh-80px)] bg-background z-40 md:hidden flex flex-col p-8"
           >
-            {navLinks.map((link) => (
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-col gap-8"
+            >
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.1 + index * 0.05 }}
+                >
+                  <Link
+                    href={link.href}
+                    className={`font-montserrat text-3xl font-bold tracking-tight ${
+                      pathname === link.href ? "text-gold" : "text-on-surface"
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mt-auto pb-12"
+            >
               <Link
-                key={link.name}
-                href={link.href}
-                className={`font-poppins text-sm tracking-widest uppercase ${
-                  pathname === link.href ? "text-gold" : "text-on-surface-variant"
-                }`}
+                href="/contact"
+                className="w-full bg-gold text-navy flex items-center justify-center gap-3 py-5 text-lg font-poppins font-bold rounded-2xl shadow-xl shadow-gold/20"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.name}
+                GET IN TOUCH <ArrowRight />
               </Link>
-            ))}
-            <Link
-              href="/contact"
-              className="bg-gold text-navy px-6 py-3 text-center font-poppins text-xs font-bold rounded mt-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              GET IN TOUCH
-            </Link>
+              <div className="flex justify-center gap-8 mt-12 text-on-surface-variant">
+                <Globe className="w-6 h-6" />
+                <span className="font-poppins text-xs tracking-widest font-bold">LAGOS • LONDON • HOUSTON</span>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
