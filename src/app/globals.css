@@ -1,26 +1,148 @@
 @import "tailwindcss";
 
+@theme {
+  --font-montserrat: var(--font-montserrat);
+  --font-inter: var(--font-inter);
+  --font-poppins: var(--font-poppins);
+
+  --color-navy: #061A40;
+  --color-navy-light: #0A2A66;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E5C158;
+  --color-electric-blue: #00B4FF;
+  --color-silver-gray: #D9D9D9;
+  --color-background: #0A0A0A;
+  --color-surface: #131316;
+  --color-surface-dim: #0D0E11;
+  --color-surface-bright: #39393C;
+  --color-on-surface: #E4E2E6;
+  --color-on-surface-variant: #C5C6CF;
+  
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+
+  --spacing-margin-mobile: 16px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1440px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0A0A0A;
+  --foreground: #E4E2E6;
+  --accent-gold: #D4AF37;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::selection {
+  background-color: var(--accent-gold);
+  color: #061A40;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f22;
+  border-radius: 10px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
+
+/* Global Transitions */
+* {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.glass-card {
+  background: rgba(6, 26, 64, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(212, 175, 55, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 180, 255, 0.4);
+}
+
+.gold-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.gold-button {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8962D 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.gold-button:hover::after {
+  left: 100%;
+}
+
+/* Typography Scales */
+h1, h2, h3, h4 {
+  letter-spacing: -0.02em;
+}
+
+.font-premium {
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Skeleton Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #131316 25%, #1b1b1e 50%, #131316 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
 }
