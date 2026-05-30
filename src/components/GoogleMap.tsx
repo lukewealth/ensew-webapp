@@ -11,7 +11,7 @@ import {
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
 
-const HEADQUARTERS = { lat: 6.5244, lng: 3.3792 }; // Lagos, Nigeria
+const HEADQUARTERS = { lat: 6.4281, lng: 3.4219 }; // Victoria Island, Lagos, Nigeria
 
 const mapStyles = [
   { elementType: "geometry", stylers: [{ color: "#061A40" }] },

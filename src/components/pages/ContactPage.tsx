@@ -99,7 +99,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-sm mb-1 uppercase tracking-widest">Headquarters</h4>
-                        <p className="text-on-surface-variant text-sm">Lagos, Nigeria</p>
+                        <p className="text-on-surface-variant text-sm">Adetokunbo Ademola Street, Victoria Island, Lagos</p>
                       </div>
                     </div>
 
