@@ -62,6 +62,10 @@ body {
   font-family: var(--font-inter), ui-sans-serif, system-ui;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
 /* Premium Scrollbar */
@@ -147,15 +151,32 @@ body {
 }
 
 /* Typography Scales */
-h1, h2, h3, h4 {
-  letter-spacing: -0.02em;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
   color: var(--on-surface);
 }
 
 .font-premium {
   font-family: var(--font-montserrat);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+}
+
+.font-body {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+}
+
+.font-ui {
+  font-family: var(--font-poppins);
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 /* Skeleton Shimmer */

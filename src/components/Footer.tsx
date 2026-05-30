@@ -28,11 +28,9 @@ const Footer = () => {
         </div>
 
         <div className="text-sm font-inter text-on-surface-variant text-center opacity-80 max-w-2xl">
-          © {new Date().getFullYear()} ENSEW Services Limited. All rights reserved. 
+          © {new Date().getFullYear()} ENSEW Services Limited. All rights reserved.
           <br />
           Building Global Business Connections Through Smart Industrial Solutions.
-          <br />
-          Powered by TRICODE PRO Design DNA™.
         </div>
       </div>
     </footer>
