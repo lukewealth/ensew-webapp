@@ -19,7 +19,8 @@ import {
   Cpu, 
   ShieldAlert,
   Handshake,
-  BarChart3
+  BarChart3,
+  ArrowRight
 } from "lucide-react";
 
 const HomePage = () => {
@@ -45,9 +46,22 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <span className="inline-block bg-gold/20 text-gold font-poppins text-xs font-bold px-4 py-2 rounded-full mb-8 tracking-[0.3em] uppercase border border-gold/30">
-                Global Industrial Excellence
-              </span>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="inline-block group mb-8 cursor-default"
+              >
+                <div className="relative bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 overflow-hidden transition-all duration-500 group-hover:border-gold/50 group-hover:bg-gold/5 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                  <span className="relative flex items-center gap-2 text-gold font-poppins text-xs font-bold tracking-[0.3em] uppercase">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+                    </span>
+                    Global Industrial Excellence
+                  </span>
+                </div>
+              </motion.div>
               <h1 className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow">
                 Building Global <span className="text-gold">Business</span> Connections.
               </h1>
@@ -56,11 +70,14 @@ const HomePage = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Link href="/contact" className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group shadow-2xl">
-                  Request Consultation <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <Link 
+                  href="/track" 
+                  className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-95"
+                >
+                  Track Your Shipment <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <button className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/10 transition-all border border-white/20 backdrop-blur-md">
-                  <div className="bg-gold/20 p-2 rounded-full"><Play size={14} className="fill-gold text-gold" /></div> Watch Story
+                <button className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/10 transition-all border border-white/20 backdrop-blur-md group">
+                  <div className="bg-gold/20 p-2 rounded-full transition-transform group-hover:scale-110"><Play size={14} className="fill-gold text-gold" /></div> Watch Story
                 </button>
               </div>
             </motion.div>
