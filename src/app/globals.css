@@ -11,12 +11,13 @@
   --color-gold-light: #E5C158;
   --color-electric-blue: #00B4FF;
   --color-silver-gray: #D9D9D9;
-  --color-background: #0A0A0A;
-  --color-surface: #131316;
-  --color-surface-dim: #0D0E11;
-  --color-surface-bright: #39393C;
-  --color-on-surface: #E4E2E6;
-  --color-on-surface-variant: #C5C6CF;
+  
+  --color-background: var(--background);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
   
   --radius-sm: 0.125rem;
   --radius-md: 0.25rem;
@@ -31,8 +32,22 @@
 }
 
 :root {
+  --background: #FFFFFF;
+  --on-surface: #0A0A0A;
+  --on-surface-variant: #4A4A4A;
+  --surface: #F5F5F7;
+  --surface-dim: #E5E5E7;
+  --surface-bright: #FFFFFF;
+  --accent-gold: #D4AF37;
+}
+
+.dark {
   --background: #0A0A0A;
-  --foreground: #E4E2E6;
+  --on-surface: #E4E2E6;
+  --on-surface-variant: #C5C6CF;
+  --surface: #131316;
+  --surface-dim: #0D0E11;
+  --surface-bright: #39393C;
   --accent-gold: #D4AF37;
 }
 
@@ -43,7 +58,7 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--on-surface);
   font-family: var(--font-inter), ui-sans-serif, system-ui;
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -59,7 +74,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f1f22;
+  background: var(--surface-dim);
   border-radius: 10px;
   border: 2px solid var(--background);
 }
@@ -70,14 +85,25 @@ body {
 
 /* Global Transitions */
 * {
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .glass-card {
-  background: rgba(6, 26, 64, 0.4);
+  background: rgba(var(--glass-bg), 0.4);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(var(--glass-border), 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --glass-bg: 245, 245, 247;
+  --glass-border: 0, 0, 0;
+}
+
+.dark {
+  --glass-bg: 6, 26, 64;
+  --glass-border: 255, 255, 255;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
 }
 
@@ -123,6 +149,7 @@ body {
 /* Typography Scales */
 h1, h2, h3, h4 {
   letter-spacing: -0.02em;
+  color: var(--on-surface);
 }
 
 .font-premium {
@@ -142,7 +169,7 @@ h1, h2, h3, h4 {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, #131316 25%, #1b1b1e 50%, #131316 75%);
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface-dim) 50%, var(--surface) 75%);
   background-size: 1000px 100%;
   animation: shimmer 2s infinite linear;
 }

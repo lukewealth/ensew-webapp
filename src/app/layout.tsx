@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -87,11 +88,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${inter.variable} ${poppins.variable} h-full antialiased dark`}
+      suppressHydrationWarning
+      className={`${montserrat.variable} ${inter.variable} ${poppins.variable} h-full antialiased`}
     >
-      <body className="bg-background text-on-surface font-inter min-h-full flex flex-col">
-        <ScrollProgress />
-        {children}
+      <body className="bg-background text-on-surface font-inter min-h-full flex flex-col transition-colors duration-300">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ScrollProgress />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

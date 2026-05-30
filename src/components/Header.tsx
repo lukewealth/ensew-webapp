@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Globe, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -60,7 +61,7 @@ const Header = () => {
             key={link.name}
             href={link.href}
             className={`font-poppins text-[10px] tracking-[0.2em] uppercase transition-all duration-300 relative group py-2 ${
-              pathname === link.href ? "text-gold" : "text-on-surface-variant hover:text-white"
+              pathname === link.href ? "text-gold" : "text-on-surface-variant hover:text-on-surface"
             }`}
           >
             {link.name}
@@ -70,6 +71,7 @@ const Header = () => {
       </nav>
 
       <div className="flex items-center gap-6">
+        <ThemeToggle />
         <Globe className="hidden sm:block text-electric-blue cursor-pointer w-5 h-5 hover:text-gold transition-colors" />
         <Link
           href="/contact"

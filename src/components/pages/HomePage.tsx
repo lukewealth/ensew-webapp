@@ -87,7 +87,7 @@ const HomePage = () => {
               className="glass-card p-12 rounded-xl"
             >
               <span className="text-gold font-poppins text-xs tracking-[0.2em] uppercase block mb-4">Who We Are</span>
-              <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6 text-white">Strategic Partner for Industrial Excellence</h2>
+              <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6 text-on-surface">Strategic Partner for Industrial Excellence</h2>
               <p className="text-lg font-inter text-on-surface-variant mb-6 leading-relaxed">
                 ENSEW Services Limited is a dynamic Nigerian enterprise committed to delivering innovative trade, logistics, industrial supply, distribution, and contracting solutions that drive sustainable business growth.
               </p>
@@ -115,7 +115,7 @@ const HomePage = () => {
         <section className="py-24 bg-surface-dim">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-montserrat font-extrabold text-white mb-4">Our Core Services</h2>
+              <h2 className="text-4xl font-montserrat font-extrabold text-on-surface mb-4">Our Core Services</h2>
               <div className="h-1 w-20 bg-gold mx-auto"></div>
             </div>
 
@@ -137,7 +137,7 @@ const HomePage = () => {
                   className="glass-card p-8 rounded-xl hover:bg-navy/40 transition-all group"
                 >
                   <service.icon className="text-gold w-12 h-12 mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-montserrat font-bold text-white mb-4">{service.title}</h3>
+                  <h3 className="text-xl font-montserrat font-bold text-on-surface mb-4">{service.title}</h3>
                   <p className="text-on-surface-variant text-sm leading-relaxed">{service.desc}</p>
                 </motion.div>
               ))}
@@ -150,20 +150,22 @@ const HomePage = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl font-montserrat font-extrabold text-white mb-8">Why Businesses Trust ENSEW</h2>
+                <span className="text-gold font-poppins text-xs tracking-[0.3em] uppercase block mb-4">Why Businesses Trust ENSEW</span>
+                <h2 className="text-4xl md:text-5xl font-montserrat font-extrabold text-on-surface mb-8 tracking-tight">Delivering Long-Term Value & Reliability</h2>
                 <div className="space-y-8">
                   {[
-                    { title: "Professional Operations", desc: "We maintain a 99.8% on-time completion rate for all contracts." },
-                    { title: "Quality Assurance", desc: "Our team navigates complex international standards with precision." },
-                    { title: "Reliable Partnerships", desc: "Solutions that grow with you, from regional to global expansions." }
+                    { title: "Professional Operations", desc: "World-class standards in logistics, industrial supply, and contracting with a 99.8% on-time completion rate." },
+                    { title: "Quality Assurance", desc: "Rigorous quality control protocols across all industrial supply and distribution channels." },
+                    { title: "Reliable Partnerships", desc: "A trusted international partner providing efficient logistics and strategic investment development." },
+                    { title: "International Network", desc: "Extensive global reach connecting Nigerian opportunities with international industrial standards." }
                   ].map((item) => (
-                    <div key={item.title} className="flex gap-4">
-                      <div className="mt-1">
+                    <div key={item.title} className="flex gap-4 group">
+                      <div className="mt-1 bg-gold/10 p-2 rounded-lg group-hover:bg-gold/20 transition-colors">
                         <CheckCircle2 className="text-gold w-6 h-6" />
                       </div>
                       <div>
-                        <h4 className="text-white font-bold mb-2">{item.title}</h4>
-                        <p className="text-on-surface-variant text-sm">{item.desc}</p>
+                        <h4 className="text-on-surface font-bold mb-2 text-lg">{item.title}</h4>
+                        <p className="text-on-surface-variant text-sm leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -215,7 +217,7 @@ const HomePage = () => {
         <section className="py-24 bg-surface-dim">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-montserrat font-extrabold text-white mb-4">Industries We Serve</h2>
+              <h2 className="text-4xl font-montserrat font-extrabold text-on-surface mb-4">Industries We Serve</h2>
               <p className="text-on-surface-variant max-w-2xl mx-auto">Tailored expertise for the world's most demanding sectors.</p>
             </div>
             
@@ -253,7 +255,7 @@ const HomePage = () => {
             <div className="max-w-7xl mx-auto px-6">
               <div className="flex items-center gap-3 mb-6">
                 <History className="text-gold w-5 h-5" />
-                <h3 className="text-sm font-poppins font-bold tracking-widest text-white uppercase">Recently Explored</h3>
+                <h3 className="text-sm font-poppins font-bold tracking-widest text-on-surface uppercase">Recently Explored</h3>
               </div>
               <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
                 {recentlyViewed.map((item) => (
@@ -269,7 +271,7 @@ const HomePage = () => {
         {/* Final CTA */}
         <section className="py-24 bg-background border-t border-white/10">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl font-montserrat font-extrabold text-white mb-8">Ready To Scale Your Business Operations?</h2>
+            <h2 className="text-4xl font-montserrat font-extrabold text-on-surface mb-8">Ready To Scale Your Business Operations?</h2>
             <p className="text-lg text-on-surface-variant mb-12">Let's discuss how ENSEW Services Limited can support your next project with our global logistics and industrial frameworks.</p>
             <button className="gold-button px-16 py-5 text-navy font-poppins text-sm font-bold tracking-widest rounded-xl uppercase">
               Schedule Consultation
