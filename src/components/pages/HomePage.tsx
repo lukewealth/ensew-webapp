@@ -5,7 +5,22 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Globe, Shield, TrendingUp, Users, ChevronRight, Play, CheckCircle } from "lucide-react";
+import { 
+  Globe, 
+  Shield, 
+  TrendingUp, 
+  Users, 
+  ChevronRight, 
+  Play, 
+  CheckCircle, 
+  Truck, 
+  Package, 
+  Construction, 
+  Cpu, 
+  ShieldAlert,
+  Handshake,
+  BarChart3
+} from "lucide-react";
 
 const HomePage = () => {
   return (
@@ -16,9 +31,9 @@ const HomePage = () => {
         {/* Hero Section */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-navy/60 z-10 backdrop-blur-[2px]"></div>
+            <div className="absolute inset-0 bg-black/50 z-10 backdrop-blur-[1px]"></div>
             <img 
-              src="https://images.unsplash.com/photo-1574259392081-dbe3c19cd15e?auto=format&fit=crop&q=80&w=2000" 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9gMY8PbEN61fUeZLUcauVmUs6GJf8uykckU3_XB1USAFIJRcpBFdoAuiqzrT4AASGYhD9VG4yBn6bFXUG73JLhiAEEbGGQ_SI0auEOdRJNHeDp92ta2cu4qSVqeW6z9FDnz6ByKx85k2JjkqEy51WWdVkMrEIQ3oUavdRZYqWOLO1BBt8MnfjVqzuOlyVfbqvQBHugnh6kDDtVrqlEPn20IhDULT0ckrhdx6CKxwtshDjfPMdfqkrdI7pSCesLtJtAGF1tWHLqhjz" 
               alt="Industrial Hero" 
               className="w-full h-full object-cover scale-105 animate-slow-zoom"
             />
@@ -33,18 +48,18 @@ const HomePage = () => {
               <span className="inline-block bg-gold/20 text-gold font-poppins text-xs font-bold px-4 py-2 rounded-full mb-8 tracking-[0.3em] uppercase border border-gold/30">
                 Global Industrial Excellence
               </span>
-              <h1 className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9]">
+              <h1 className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow">
                 Building Global <span className="text-gold">Business</span> Connections.
               </h1>
               <p className="text-lg md:text-xl text-on-surface-variant mb-12 max-w-3xl mx-auto leading-relaxed font-inter">
-                ENSEW Services Limited provides trusted logistics, industrial supply, and strategic business partnerships across Nigeria and global markets.
+                ENSEW Services Limited provides world-class logistics and industrial frameworks designed for the scale and complexity of modern international trade.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Link href="/contact" className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group">
+                <Link href="/contact" className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group shadow-2xl">
                   Request Consultation <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <button className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/5 transition-all border border-white/10">
+                <button className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/10 transition-all border border-white/20 backdrop-blur-md">
                   <div className="bg-gold/20 p-2 rounded-full"><Play size={14} className="fill-gold text-gold" /></div> Watch Story
                 </button>
               </div>
@@ -52,31 +67,18 @@ const HomePage = () => {
           </div>
 
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
-            <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-gold to-transparent"></div>
+             <motion.div 
+               animate={{ y: [0, 10, 0] }} 
+               transition={{ repeat: Infinity, duration: 2 }}
+               className="text-tertiary"
+             >
+               <ChevronRight size={40} className="rotate-90" />
+             </motion.div>
           </div>
         </section>
 
-        {/* Stats Bar */}
-        <section className="bg-navy border-y border-white/5 relative z-30">
-          <div className="max-w-7xl mx-auto px-6 py-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-              {[
-                { val: "500+", label: "Projects Delivered" },
-                { val: "100+", label: "Business Partners" },
-                { val: "15+", label: "Industries Served" },
-                { val: "98%", label: "Satisfaction Rate" }
-              ].map((stat, i) => (
-                <div key={i}>
-                  <div className="text-3xl md:text-4xl font-montserrat font-extrabold text-gold mb-2">{stat.val}</div>
-                  <div className="text-[10px] font-poppins font-bold text-on-surface-variant uppercase tracking-widest">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Introduction Section */}
-        <section className="py-32 bg-background overflow-hidden">
+        {/* Introduction Section (Who We Are) */}
+        <section className="py-32 bg-surface overflow-hidden border-b border-white/5">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-24 items-center">
               <motion.div
@@ -84,13 +86,17 @@ const HomePage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
+                className="glass-card p-12 rounded-[2.5rem]"
               >
-                <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-6">Introduction</span>
+                <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-6">Premium Corporate Identity</span>
                 <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold text-white mb-8 tracking-tight leading-tight">
-                  The New Standard in <span className="text-gold">Enterprise</span> Operations.
+                  Who We <span className="text-gold">Are</span>
                 </h2>
+                <p className="text-lg text-on-surface-variant mb-6 leading-relaxed font-inter">
+                  ENSEW Services Limited stands at the forefront of industrial excellence. We are more than a service provider; we are a strategic partner in your global growth journey.
+                </p>
                 <p className="text-lg text-on-surface-variant mb-10 leading-relaxed font-inter">
-                  ENSEW Services Limited is a dynamic Nigerian enterprise committed to delivering innovative trade, logistics, industrial supply, distribution, and contracting solutions that drive sustainable business growth.
+                  Our methodology combines decades of industrial experience with cutting-edge digital integration, ensuring your operations remain resilient in an ever-shifting global market.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {[
@@ -115,96 +121,174 @@ const HomePage = () => {
               >
                 <div className="absolute -inset-4 bg-gold/10 blur-3xl rounded-full"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Operations" 
-                  className="relative z-10 rounded-[3rem] border border-white/5 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBikyLe0EkjZzXmuth81aX7appnqzet4rk5ukm_bDZRvCbRsNF7XvB7H3Q37uiP6q3KuMirY3s3hfK_H3nVxJdBpd4x_jJo2sFpd1zkKwdx_z9p065Kj3j2o95RLvOMNmvNzjm_kzDe_oWIvAIRRfF7gy9CFREpCr5qf3TEZuUaKhIQ37DdO2nLjjipgcmjePsZ68Yw4SA4JDBcrBA04WBCu6ERCspF-OCykntH--NX59WByBhkb2ityDSHydneWRlXM0KypqDemSGf" 
+                  alt="Corporate Excellence" 
+                  className="relative z-10 rounded-[3rem] border border-white/10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 h-[500px] w-full object-cover"
                 />
-                <div className="absolute -bottom-10 -left-10 z-20 glass-card p-8 rounded-3xl border border-white/10 hidden md:block">
-                  <Globe className="text-gold w-10 h-10 mb-4 animate-spin-slow" />
-                  <div className="text-2xl font-montserrat font-bold text-white">Global Reach</div>
-                  <div className="text-[10px] font-poppins text-on-surface-variant font-bold uppercase tracking-widest mt-1">Lagos • London • Houston</div>
-                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-32 bg-surface-dim border-y border-white/5">
+        {/* Core Services Section */}
+        <section className="py-32 bg-surface-container-lowest">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-20">
-              <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-4">Core Strengths</span>
-              <h2 className="text-4xl md:text-5xl font-montserrat font-extrabold text-white uppercase tracking-tight">Why Businesses Trust ENSEW</h2>
+            <div className="text-center mb-24">
+              <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold text-white mb-6 uppercase tracking-tight">Our Core Services</h2>
+              <div className="h-1 w-24 bg-gold mx-auto rounded-full"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { 
-                  title: "Professional Operations", 
-                  desc: "Meticulous attention to detail in every container, contract, and connection.",
-                  icon: Shield,
-                  color: "text-gold"
-                },
-                { 
-                  title: "Reliable Partnerships", 
-                  desc: "We don&apos;t just serve clients; we build long-term value-driven industrial alliances.",
-                  icon: Users,
-                  color: "text-electric-blue"
-                },
-                { 
-                  title: "Efficient Logistics", 
-                  desc: "Streamlined supply chain frameworks designed for speed, safety, and scale.",
-                  icon: TrendingUp,
-                  color: "text-gold"
-                }
-              ].map((feature, i) => (
+                { title: "Logistics Solutions", icon: Truck, desc: "End-to-end supply chain management optimized for speed, security, and real-time visibility across global borders." },
+                { title: "Supply Chain", icon: Package, desc: "Advanced procurement and inventory strategies designed to minimize overhead and maximize operational flow." },
+                { title: "Contracting", icon: Construction, desc: "Executive-tier industrial contracting for large-scale infrastructure and technical engineering projects." },
+                { title: "Industrial Supply", icon: ShieldAlert, desc: "Critical component sourcing and distribution for heavy machinery and manufacturing ecosystems." },
+                { title: "Technical Integration", icon: Cpu, desc: "Seamless digital layer implementation for legacy industrial systems, enabling IoT and data-driven insights." },
+                { title: "Risk Management", icon: Shield, desc: "Sophisticated auditing and safety protocols to protect your enterprise assets and workforce globally." },
+              ].map((service, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass-card p-12 rounded-[2.5rem] border border-white/5 group hover:bg-navy/40 transition-all duration-500"
+                  className="glass-card p-10 rounded-3xl border border-white/5 hover:bg-navy/40 transition-all group"
                 >
-                  <div className={`p-4 bg-navy-light rounded-2xl inline-block mb-8 group-hover:scale-110 transition-transform ${feature.color}`}>
-                    <feature.icon size={32} />
-                  </div>
-                  <h3 className="text-xl font-montserrat font-bold text-white mb-4 uppercase tracking-widest">{feature.title}</h3>
-                  <p className="text-on-surface-variant leading-relaxed">{feature.desc}</p>
+                  <service.icon size={48} className="text-gold mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-montserrat font-bold text-white mb-4 uppercase tracking-tight">{service.title}</h3>
+                  <p className="text-on-surface-variant leading-relaxed text-sm font-inter">{service.desc}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Industries Preview */}
-        <section className="py-32 bg-background">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
-              <div className="max-w-2xl">
-                <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-4">Sectors</span>
-                <h2 className="text-4xl md:text-5xl font-montserrat font-extrabold text-white tracking-tight uppercase">Industries We Serve</h2>
-              </div>
-              <Link href="/industries" className="text-gold font-poppins text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
-                View All Industries <ChevronRight size={16} />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Stats Parallax */}
+        <section className="relative py-32 overflow-hidden flex items-center justify-center">
+           <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCikxP7KLC6zhV4u7TtXodzt8J8du_7XLZGy43IzBwDiLg6eVuZErjkXQUwANlcSeQMUxLWIzYmCRJmCpkDkA6dGZ_iieb0WotuPF2FNzPsNSMZVBspQ07wQTVOdk30s72LoRZ5BvMicyCe8zBObIjG9-qFXJahjL5jZFjRQa3a9_pupkQ5463-JlbZqzmIKgmDpjGtrUvN9CH88SwiAmgrf4A2y7hlFyjtMDYWsJY2l_lgso53nugsjDryNuiZJoh16FaqrRo6oRlx"
+              alt="Industrial Capacity"
+              className="absolute inset-0 w-full h-full object-cover"
+           />
+           <div className="absolute inset-0 bg-navy/80 backdrop-blur-sm"></div>
+           <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
               {[
-                { name: "Manufacturing", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" },
-                { name: "Energy", img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800" },
-                { name: "Construction", img: "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800" },
-                { name: "Retail", img: "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&q=80&w=800" }
-              ].map((ind, i) => (
-                <Link href="/industries" key={i} className="group relative h-[400px] overflow-hidden rounded-3xl">
-                  <img src={ind.img} alt={ind.name} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent flex flex-col justify-end p-8">
-                    <h3 className="text-xl font-montserrat font-bold text-white uppercase tracking-widest group-hover:text-gold transition-colors">{ind.name}</h3>
-                  </div>
-                </Link>
+                { val: "500+", label: "PROJECTS COMPLETED" },
+                { val: "100+", label: "GLOBAL PARTNERS" },
+                { val: "24/7", label: "OPERATIONAL SUPPORT" },
+                { val: "15+", label: "INDUSTRIES SERVED" }
+              ].map((stat, i) => (
+                <div key={i}>
+                  <div className="text-4xl md:text-7xl font-montserrat font-extrabold text-gold mb-2">{stat.val}</div>
+                  <div className="text-[10px] font-poppins font-bold text-white tracking-[0.3em] uppercase">{stat.label}</div>
+                </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Why Businesses Trust Us Section */}
+        <section className="py-32 bg-surface">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-24 items-center">
+              <div>
+                <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-4">DNA</span>
+                <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold text-white uppercase tracking-tight mb-12">Why Businesses Trust ENSEW</h2>
+                
+                <ul className="space-y-10 mb-12">
+                  {[
+                    { title: "Unmatched Reliability", desc: "We maintain a 99.8% on-time completion rate for all industrial contracts and supply chains." },
+                    { title: "Global Regulatory Compliance", desc: "Our team navigates complex international trade laws and safety standards with absolute precision." },
+                    { title: "Scalable Infrastructure", desc: "Solutions that grow with you, from regional pilot programs to global enterprise expansions." }
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-6 group">
+                      <div className="bg-gold/10 p-2 rounded-xl group-hover:bg-gold/20 transition-colors">
+                        <CheckCircle className="text-gold" size={24} />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-montserrat font-bold text-xl mb-2">{item.title}</h4>
+                        <p className="text-on-surface-variant font-inter leading-relaxed">{item.desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { icon: Shield, label: "SECURE DATA" },
+                  { icon: Globe, label: "GLOBAL REACH" },
+                  { icon: Handshake, label: "ELITE PARTNERS" },
+                  { icon: BarChart3, label: "PRECISE ROI" }
+                ].map((card, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ y: -10 }}
+                    className="glass-card h-48 flex flex-col items-center justify-center p-8 rounded-[2rem] border border-white/5 group transition-all"
+                  >
+                    <card.icon className="text-gold w-10 h-10 mb-4 group-hover:scale-110 transition-transform" />
+                    <span className="text-[10px] font-poppins font-bold tracking-[0.2em] text-white text-center uppercase">{card.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Industries Preview */}
+        <section className="py-32 bg-surface-container-low">
+          <div className="max-w-7xl mx-auto px-6 text-center mb-20">
+            <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-4">Sectors</span>
+            <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold text-white tracking-tight uppercase">Industries We Serve</h2>
+            <p className="text-lg text-on-surface-variant max-w-2xl mx-auto mt-6">Tailored expertise for the world&apos;s most demanding sectors.</p>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[700px]">
+            <Link href="/industries" className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Mu5GSfmxEd4NAx5ustmwyb9OIi82HlYogJPg37ldTTRRkKRA6BQHYOmTdFN7yWexDwdrrBAT1QsbwhoVBeHNrGNfNp4Om_8eKFUS6slIeu58ny9a9gUvokbuZsFGn68ilbvNY3GD74ykV7YwGl9Lo-HJCcnery9wUMGOmDszmW9l1_9jrB3_DWtj0XncNdYDJi4eorVnMXVOL2ve77-kW7UgO-w8aWznSjXftRzFCFlJPj9nu4O__eqSlao2we1Or1TrtF2jfHPF" 
+                alt="Heavy Manufacturing" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-12">
+                <h3 className="text-3xl font-montserrat font-bold text-white uppercase group-hover:text-gold transition-colors">Heavy Manufacturing</h3>
+              </div>
+            </Link>
+
+            <Link href="/industries" className="relative group overflow-hidden rounded-[2rem] border border-white/10">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA8REQHPAsE7fYVVq99EyTbdRpzD2_ASEqCm12oDeynjtNWLeANAJ_8fFF5A1i3goMZpkLLqKXh4qkeXDnhRknhD4pLjAdgJSIg6d_VXMDVzTfNBIphW_xxXhwUrUdzFYtoz_chXuZXZ6qsfG4JviThjBnCMQrVYPOge3aMJXfRrEpRssOxadF8Uv9qt_Wo7ZPHCyNzp1N8K2Ds0dr8MpJFKJLYZkLpIt6poNTL2rPYm_PDbbApTEXPOCp_gpAXAZEs8bBLH8RvGQc" 
+                alt="Energy & Utilities" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+                <h3 className="text-xl font-montserrat font-bold text-white uppercase group-hover:text-gold transition-colors">Energy & Utilities</h3>
+              </div>
+            </Link>
+
+            <Link href="/industries" className="relative group overflow-hidden rounded-[2rem] border border-white/10">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQY7h1PdbU7qUcRXqNB-kU3-07KNBKg59cjNhZ-fB3TV1m-VwnhBB6EKUHdWnnuSE8L9an-LHMGCpA9hscZGzeIidZHS_SLpDWB_bUSi-Bv28jivO0gvAWKU8AMnMzVadWaXKvxqYyHzx-VkBQu26Jg52yVKURC27A5Fzz51ItfTH8CWZEr__pBX8hMDrFpc7owKhYlzhK8RZ-YorWEj46sKr8QUFkaLTNtqeoyIzBt7FAMJ3NJ3Pnq6rL5nWtvkTDHJS7OnerPIa-" 
+                alt="Pharmaceuticals" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+                <h3 className="text-xl font-montserrat font-bold text-white uppercase group-hover:text-gold transition-colors">Pharmaceuticals</h3>
+              </div>
+            </Link>
+
+            <Link href="/industries" className="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAshYPm_oKYreSI2_xLXLNGWggl10lWKfQCf6OhknGzBqDuWzh8K8KbCEbCsevqoOY5hj4iDL1XfoDBol799ZpE9k7dT_QljEFbIAUGZogBrVZ8V5J5Xt2tr2jj4qXLF4sOLkL-795SeIDGvRC5GgcOVI-CUcOiORhYfVRpumcx2BUOGowSJrInCukz_XBk36YMNZhNi5Vevd-zyyXUgBzBVVQ7V0kRftHb2-KSDbM_VrbM-eoCuwhvVyaNwrnyAqiPx7ieJKVyUkK3" 
+                alt="Logistics & Supply" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-12">
+                <h3 className="text-3xl font-montserrat font-bold text-white uppercase group-hover:text-gold transition-colors">Logistics & Supply</h3>
+              </div>
+            </Link>
           </div>
         </section>
 
@@ -216,15 +300,15 @@ const HomePage = () => {
           </div>
           
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold text-white mb-10 tracking-tight uppercase leading-none">
+            <h2 className="text-4xl md:text-7xl font-montserrat font-extrabold text-white mb-10 tracking-tight uppercase leading-none">
               Ready To Scale Your <span className="text-gold">Business</span> Operations?
             </h2>
-            <p className="text-lg text-on-surface-variant mb-12 font-inter max-w-2xl mx-auto">
-              Partner with ENSEW Services Limited today and experience the power of smart industrial solutions. Let&apos;s discuss how we can support your next project.
+            <p className="text-lg md:text-xl text-on-surface-variant mb-12 font-inter max-w-2xl mx-auto">
+              Partner with ENSEW Services Limited and experience the synergy of elite industrial expertise and smart digital solutions.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link href="/contact" className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase shadow-2xl shadow-gold/20">
-                Schedule Consultation
+              <Link href="/contact" className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase shadow-2xl shadow-gold/20 text-lg">
+                Connect With An Expert
               </Link>
               <Link href="/contact" className="px-12 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase border border-white/10 hover:bg-white/5 transition-all">
                 Get In Touch

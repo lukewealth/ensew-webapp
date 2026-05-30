@@ -19,7 +19,7 @@ const projects = [
     challenge: "Complex cross-border grain distribution with 20% spoilage rate.",
     solution: "Smart IoT-enabled logistics and climate-controlled supply chain.",
     results: "Spoilage reduced to < 2%, 15% increase in operational efficiency.",
-    image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800"
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDQY7h1PdbU7qUcRXqNB-kU3-07KNBKg59cjNhZ-fB3TV1m-VwnhBB6EKUHdWnnuSE8L9an-LHMGCpA9hscZGzeIidZHS_SLpDWB_bUSi-Bv28jivO0gvAWKU8AMnMzVadWaXKvxqYyHzx-VkBQu26Jg52yVKURC27A5Fzz51ItfTH8CWZEr__pBX8hMDrFpc7owKhYlzhK8RZ-YorWEj46sKr8QUFkaLTNtqeoyIzBt7FAMJ3NJ3Pnq6rL5nWtvkTDHJS7OnerPIa-"
   },
   {
     name: "Lagos Industrial Hub",
@@ -27,7 +27,7 @@ const projects = [
     challenge: "Inefficient component sourcing causing 30-day production delays.",
     solution: "Centralized industrial supply framework and automated procurement.",
     results: "Delays reduced to 48 hours, 25% cost savings on critical parts.",
-    image: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?auto=format&fit=crop&q=80&w=800"
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB_Mu5GSfmxEd4NAx5ustmwyb9OIi82HlYogJPg37ldTTRRkKRA6BQHYOmTdFN7yWexDwdrrBAT1QsbwhoVBeHNrGNfNp4Om_8eKFUS6slIeu58ny9a9gUvokbuZsFGn68ilbvNY3GD74ykV7YwGl9Lo-HJCcnery9wUMGOmDszmW9l1_9jrB3_DWtj0XncNdYDJi4eorVnMXVOL2ve77-kW7UgO-w8aWznSjXftRzFCFlJPj9nu4O__eqSlao2we1Or1TrtF2jfHPF"
   },
   {
     name: "Offshore Energy Logistics",
@@ -35,7 +35,7 @@ const projects = [
     challenge: "High-risk heavy equipment transport to deep-sea installations.",
     solution: "Specialized logistics and rigorous risk management protocols.",
     results: "Zero-incident delivery record over 24 months of operation.",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800"
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCA8REQHPAsE7fYVVq99EyTbdRpzD2_ASEqCm12oDeynjtNWLeANAJ_8fFF5A1i3goMZpkLLqKXh4qkeXDnhRknhD4pLjAdgJSIg6d_VXMDVzTfNBIphW_xxXhwUrUdzFYtoz_chXuZXZ6qsfG4JviThjBnCMQrVYPOge3aMJXfRrEpRssOxadF8Uv9qt_Wo7ZPHCyNzp1N8K2Ds0dr8MpJFKJLYZkLpIt6poNTL2rPYm_PDbbApTEXPOCp_gpAXAZEs8bBLH8RvGQc"
   },
   {
     name: "Nationwide Retail Network",
@@ -59,7 +59,7 @@ const projects = [
     challenge: "Navigating complex ECOWAS trade regulations and customs barriers.",
     solution: "Strategic manufacturing representation and trade compliance.",
     results: "300% growth in trade volume for represented international brands.",
-    image: "https://images.unsplash.com/photo-1522056615691-da7b8106c665?auto=format&fit=crop&q=80&w=800"
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAshYPm_oKYreSI2_xLXLNGWggl10lWKfQCf6OhknGzBqDuWzh8K8KbCEbCsevqoOY5hj4iDL1XfoDBol799ZpE9k7dT_QljEFbIAUGZogBrVZ8V5J5Xt2tr2jj4qXLF4sOLkL-795SeIDGvRC5GgcOVI-CUcOiORhYfVRpumcx2BUOGowSJrInCukz_XBk36YMNZhNi5Vevd-zyyXUgBzBVVQ7V0kRftHb2-KSDbM_VrbM-eoCuwhvVyaNwrnyAqiPx7ieJKVyUkK3"
   }
 ];
 
