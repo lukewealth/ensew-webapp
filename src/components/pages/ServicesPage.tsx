@@ -53,13 +53,13 @@ const services = [
     title: "Investment Development",
     icon: BarChart,
     desc: "Identifying and developing strategic business opportunities and partnerships for sustainable growth.",
-    image: "https://images.unsplash.com/photo-1454165833767-027ffec9036a?auto=format&fit=crop&q=80&w=1000",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCikxP7KLC6zhV4u7TtXodzt8J8du_7XLZGy43IzBwDiLg6eVuZErjkXQUwANlcSeQMUxLWIzYmCRJmCpkDkA6dGZ_iieb0WotuPF2FNzPsNSMZVBspQ07wQTVOdk30s72LoRZ5BvMicyCe8zBObIjG9-qFXJahjL5jZFjRQa3a9_pupkQ5463-JlbZqzmIKgmDpjGtrUvN9CH88SwiAmgrf4A2y7hlFyjtMDYWsJY2l_lgso53nugsjDryNuiZJoh16FaqrRo6oRlx",
     process: ["Analysis", "Valuation", "Structuring", "Management"]
   }
 ];
 
 const ServicesPage = () => {
-  const [recentlyViewed, setRecentlyViewed] = useLocalStorage<string[]>("recently-viewed", []);
+  const [, setRecentlyViewed] = useLocalStorage<string[]>("recently-viewed", []);
 
   const addToRecentlyViewed = (serviceTitle: string) => {
     setRecentlyViewed((prev) => {
