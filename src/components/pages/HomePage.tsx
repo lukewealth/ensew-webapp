@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -24,6 +24,28 @@ import {
 } from "lucide-react";
 
 const HomePage = () => {
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut" 
+      } 
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -42,13 +64,12 @@ const HomePage = () => {
 
           <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                variants={fadeInUp}
                 className="inline-block group mb-8 cursor-default"
               >
                 <div className="relative bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 overflow-hidden transition-all duration-500 group-hover:border-gold/50 group-hover:bg-gold/5 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]">
@@ -62,14 +83,25 @@ const HomePage = () => {
                   </span>
                 </div>
               </motion.div>
-              <h1 className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow">
+
+              <motion.h1 
+                variants={fadeInUp}
+                className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow uppercase"
+              >
                 Building Global <span className="text-gold">Business</span> Connections.
-              </h1>
-              <p className="text-lg md:text-xl text-on-surface-variant mb-12 max-w-3xl mx-auto leading-relaxed font-inter">
+              </motion.h1>
+
+              <motion.p 
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-on-surface-variant mb-12 max-w-3xl mx-auto leading-relaxed font-inter"
+              >
                 ENSEW Services Limited provides world-class logistics and industrial frameworks designed for the scale and complexity of modern international trade.
-              </p>
+              </motion.p>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <motion.div 
+                variants={fadeInUp}
+                className="flex flex-col sm:flex-row items-center justify-center gap-6"
+              >
                 <Link 
                   href="/track" 
                   className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-95"
@@ -79,7 +111,7 @@ const HomePage = () => {
                 <button className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/10 transition-all border border-white/20 backdrop-blur-md group">
                   <div className="bg-gold/20 p-2 rounded-full transition-transform group-hover:scale-110"><Play size={14} className="fill-gold text-gold" /></div> Watch Story
                 </button>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -155,7 +187,13 @@ const HomePage = () => {
               <div className="h-1 w-24 bg-gold mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
               {[
                 { title: "Logistics Solutions", icon: Truck, desc: "End-to-end supply chain management optimized for speed, security, and real-time visibility across global borders." },
                 { title: "Supply Chain", icon: Package, desc: "Advanced procurement and inventory strategies designed to minimize overhead and maximize operational flow." },
@@ -166,10 +204,8 @@ const HomePage = () => {
               ].map((service, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  variants={fadeInUp}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
                   className="glass-card p-10 rounded-3xl border border-white/5 hover:bg-navy/40 transition-all group"
                 >
                   <service.icon size={48} className="text-gold mb-6 group-hover:scale-110 transition-transform" />
@@ -177,7 +213,7 @@ const HomePage = () => {
                   <p className="text-on-surface-variant leading-relaxed text-sm font-inter">{service.desc}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -197,10 +233,15 @@ const HomePage = () => {
                 { val: "24/7", label: "OPERATIONAL SUPPORT" },
                 { val: "15+", label: "INDUSTRIES SERVED" }
               ].map((stat, i) => (
-                <div key={i}>
-                  <div className="text-4xl md:text-7xl font-montserrat font-extrabold text-gold mb-2">{stat.val}</div>
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="text-4xl md:text-7xl font-montserrat font-extrabold text-gold mb-2 tracking-tighter">{stat.val}</div>
                   <div className="text-[10px] font-poppins font-bold text-white tracking-[0.3em] uppercase">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -210,7 +251,11 @@ const HomePage = () => {
         <section className="py-32 bg-surface">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-24 items-center">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
                 <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-4">DNA</span>
                 <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold text-white uppercase tracking-tight mb-12">Why Businesses Trust ENSEW</h2>
                 
@@ -221,7 +266,7 @@ const HomePage = () => {
                     { title: "Scalable Infrastructure", desc: "Solutions that grow with you, from regional pilot programs to global enterprise expansions." }
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-6 group">
-                      <div className="bg-gold/10 p-2 rounded-xl group-hover:bg-gold/20 transition-colors">
+                      <div className="bg-gold/10 p-2 rounded-xl group-hover:bg-gold/20 transition-colors shrink-0">
                         <CheckCircle className="text-gold" size={24} />
                       </div>
                       <div>
@@ -231,9 +276,15 @@ const HomePage = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid grid-cols-2 gap-6"
+              >
                 {[
                   { icon: Shield, label: "SECURE DATA" },
                   { icon: Globe, label: "GLOBAL REACH" },
@@ -242,6 +293,7 @@ const HomePage = () => {
                 ].map((card, i) => (
                   <motion.div
                     key={i}
+                    variants={fadeInUp}
                     whileHover={{ y: -10 }}
                     className="glass-card h-48 flex flex-col items-center justify-center p-8 rounded-[2rem] border border-white/5 group transition-all"
                   >
@@ -249,7 +301,7 @@ const HomePage = () => {
                     <span className="text-[10px] font-poppins font-bold tracking-[0.2em] text-white text-center uppercase">{card.label}</span>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
