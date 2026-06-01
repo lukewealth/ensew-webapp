@@ -75,7 +75,7 @@ const Header = () => {
     >
       <div className="flex items-center gap-4 relative z-[60]">
         <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick}>
-          <img src="/images/logo.png" alt="ENSEW Logo" className="h-40 w-auto rounded hover:scale-105 transition-transform" />
+          <img src="/images/logo.png" alt="ENSEW Logo" className="h-20 w-auto rounded hover:scale-105 transition-transform" />
         </Link>
       </div>
 
