@@ -234,3 +234,12 @@ h1, h2, h3, h4, h5, h6 {
 .bg-radial-vignette {
   background: radial-gradient(circle, transparent 40%, rgba(2, 11, 28, 0.8) 100%);
 }
+
+/* Returning Visitor Optimizations */
+.returning-visitor * {
+  transition-duration: 0.1s !important;
+}
+
+.returning-visitor .animate-shimmer {
+  animation-duration: 1s !important;
+}

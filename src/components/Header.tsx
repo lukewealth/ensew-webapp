@@ -34,7 +34,6 @@ const navLinks = [
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const pathname = usePathname();
 
@@ -54,17 +53,26 @@ const Header = () => {
     }
   }, [isMobileMenuOpen]);
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setMobileDropdownOpen(null);
+  };
+
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+    setMobileDropdownOpen(null);
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 transition-all duration-700 ease-in-out ${
+      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 transition-all duration-500 ease-in-out ${
         isScrolled || isMobileMenuOpen
-          ? "nav-glassmorphism translate-y-0 shadow-[0_0_50px_rgba(0,180,255,0.1)]"
-          : "bg-transparent"
+          ? "nav-glassmorphism py-4"
+          : "bg-transparent py-6"
       }`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/40 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-      <div className="flex items-center gap-4">
-        <Link href="/" className="flex items-center gap-2">
+      <div className="flex items-center gap-4 relative z-[60]">
+        <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick}>
           <img src="/images/logo.png" alt="ENSEW Logo" className="h-10 w-auto rounded hover:scale-105 transition-transform" />
         </Link>
       </div>
@@ -72,51 +80,39 @@ const Header = () => {
       {/* Desktop Nav */}
       <nav className="hidden lg:flex gap-10">
         {navLinks.map((link) => (
-          <div 
-            key={link.name} 
-            className="relative group py-2"
-            onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
-            onMouseLeave={() => setActiveDropdown(null)}
-          >
+          <div key={link.name} className="relative group py-2">
             <Link
               href={link.href}
               className={`font-poppins text-[10px] tracking-[0.2em] uppercase transition-all duration-300 flex items-center gap-1 ${
-                pathname === link.href ? "text-gold" : "text-on-surface-variant hover:text-on-surface"
+                pathname === link.href ? "text-gold" : (isScrolled ? "text-white/80 hover:text-white" : "text-on-surface-variant hover:text-on-surface")
               }`}
             >
               {link.name}
-              {link.dropdown && <ChevronDown size={10} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />}
+              {link.dropdown && <ChevronDown size={10} className="group-hover:rotate-180 transition-transform duration-300" />}
               <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gold transition-transform duration-300 origin-left ${pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}></span>
             </Link>
 
-            <AnimatePresence>
-              {link.dropdown && activeDropdown === link.name && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute left-0 mt-2 w-56 glass-card p-4 rounded-xl border border-white/10 shadow-2xl"
-                >
-                  <div className="flex flex-col gap-3">
-                    {link.dropdown.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="text-[10px] font-poppins tracking-widest uppercase text-on-surface-variant hover:text-gold transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {link.dropdown && (
+              <div className="absolute left-0 top-full pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                <div className="glass-card p-5 min-w-[220px] flex flex-col gap-3 rounded-2xl border border-white/10 shadow-2xl">
+                  {link.dropdown.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="text-[10px] font-poppins tracking-widest uppercase text-white/70 hover:text-gold transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         ))}
         <Link
           href="/track"
           className={`font-poppins text-[10px] tracking-[0.2em] uppercase transition-all duration-300 relative group py-2 ${
-            pathname === "/track" ? "text-gold" : "text-on-surface-variant hover:text-on-surface"
+            pathname === "/track" ? "text-gold" : (isScrolled ? "text-white/80 hover:text-white" : "text-on-surface-variant hover:text-on-surface")
           }`}
         >
           Track Parcel
@@ -124,79 +120,62 @@ const Header = () => {
         </Link>
       </nav>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 relative z-[60]">
         <ThemeToggle />
-        <Globe className="hidden lg:block text-electric-blue cursor-pointer w-5 h-5 hover:text-gold transition-colors hover:scale-110" />
+        <Globe className={`hidden lg:block cursor-pointer w-5 h-5 transition-all hover:scale-110 ${isScrolled ? "text-electric-blue hover:text-gold" : "text-on-surface-variant hover:text-on-surface"}`} />
         <Link
           href="/contact"
           className="hidden md:flex items-center gap-2 bg-navy-light px-7 py-3 text-white font-poppins text-[10px] font-bold tracking-[0.1em] rounded-lg hover:bg-gold hover:text-navy hover:scale-110 active:scale-95 transition-all border border-white/10"
+          onClick={handleLinkClick}
         >
           GET IN TOUCH <ArrowRight size={14} />
         </Link>
         
         <button
-          className="lg:hidden text-on-surface p-2 -mr-2 flex items-center justify-center min-w-[44px] min-h-[44px] hover:scale-110 transition-all"
-          onClick={() => {
-            if (isMobileMenuOpen) setMobileDropdownOpen(null);
-            setIsMobileMenuOpen(!isMobileMenuOpen);
-          }}
+          className={`lg:hidden p-2 -mr-2 transition-all hover:scale-110 ${isScrolled || isMobileMenuOpen ? "text-white" : "text-on-surface"}`}
+          onClick={toggleMobileMenu}
           aria-label="Toggle Menu"
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 top-20 w-full h-[calc(100vh-80px)] bg-background z-40 lg:hidden flex flex-col p-8 overflow-y-auto"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-navy z-[55] lg:hidden flex flex-col pt-32 px-10 pb-10 overflow-y-auto"
           >
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="flex flex-col gap-6"
-            >
+            <div className="flex flex-col gap-8">
               {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 + index * 0.05 }}
-                  className="flex flex-col"
-                >
+                <div key={link.name} className="flex flex-col">
                   <div className="flex items-center justify-between">
                     <Link
                       href={link.href}
-                      className={`font-montserrat text-2xl font-bold tracking-tight hover:scale-105 transition-all inline-block origin-left ${
-                        pathname === link.href ? "text-gold" : "text-on-surface"
+                      className={`font-montserrat text-3xl font-extrabold tracking-tight ${
+                        pathname === link.href ? "text-gold" : "text-white"
                       }`}
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setMobileDropdownOpen(null);
-                      }}
+                      onClick={handleLinkClick}
                     >
                       {link.name}
                     </Link>
                     {link.dropdown && (
                       <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setMobileDropdownOpen(mobileDropdownOpen === link.name ? null : link.name);
-                        }}
-                        className="p-2 text-on-surface-variant hover:text-gold transition-colors"
+                        onClick={() => setMobileDropdownOpen(mobileDropdownOpen === link.name ? null : link.name)}
+                        className="p-3 text-gold"
                       >
                         <ChevronDown 
-                          size={24} 
-                          className={`transition-transform duration-300 ${mobileDropdownOpen === link.name ? 'rotate-180' : ''}`} 
+                          size={28}
+                          className={`transition-transform duration-300 ${mobileDropdownOpen === link.name ? "rotate-180" : ""}`} 
                         />
                       </button>
                     )}
                   </div>
-
+                  
                   <AnimatePresence>
                     {link.dropdown && mobileDropdownOpen === link.name && (
                       <motion.div
@@ -205,16 +184,13 @@ const Header = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        <div className="flex flex-col gap-4 pl-4 pt-4 pb-2 border-l-2 border-gold/20 ml-2">
+                        <div className="flex flex-col gap-5 pl-6 pt-6 pb-2 border-l-2 border-gold/30 mt-2">
                           {link.dropdown.map((item) => (
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="text-lg font-poppins tracking-widest uppercase text-on-surface-variant hover:text-gold transition-colors"
-                              onClick={() => {
-                                setIsMobileMenuOpen(false);
-                                setMobileDropdownOpen(null);
-                              }}
+                              className="text-lg font-poppins tracking-widest uppercase text-white/70 hover:text-gold"
+                              onClick={handleLinkClick}
                             >
                               {item.name}
                             </Link>
@@ -223,49 +199,39 @@ const Header = () => {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </motion.div>
+                </div>
               ))}
-              <motion.div
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
+              
+              <Link
+                href="/track"
+                className={`font-montserrat text-3xl font-extrabold tracking-tight ${
+                  pathname === "/track" ? "text-gold" : "text-white"
+                }`}
+                onClick={handleLinkClick}
               >
-                <Link
-                  href="/track"
-                  className={`font-montserrat text-2xl font-bold tracking-tight hover:scale-105 transition-all inline-block origin-left ${
-                    pathname === "/track" ? "text-gold" : "text-on-surface"
-                  }`}
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    setMobileDropdownOpen(null);
-                  }}
-                >
-                  TRACK PARCEL
-                </Link>
-              </motion.div>
-            </motion.div>
+                TRACK PARCEL
+              </Link>
 
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mt-8 space-y-4"
-            >
+              <div className="h-px bg-white/10 my-4" />
+
               <Link
                 href="/contact"
-                className="w-full bg-gold text-navy flex items-center justify-center gap-3 py-5 text-lg font-poppins font-bold rounded-2xl shadow-xl shadow-gold/20 hover:scale-105 transition-all"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setMobileDropdownOpen(null);
-                }}
+                className="w-full bg-gold text-navy flex items-center justify-center gap-4 py-6 text-xl font-poppins font-black rounded-2xl shadow-2xl shadow-gold/20 hover:scale-105 active:scale-95 transition-all"
+                onClick={handleLinkClick}
               >
-                GET IN TOUCH <ArrowRight />
+                GET IN TOUCH <ArrowRight size={24} />
               </Link>
-              <div className="flex justify-center gap-8 mt-12 text-on-surface-variant">
-                <Globe className="w-6 h-6 hover:scale-110 transition-all cursor-pointer" />
-                <span className="font-poppins text-xs tracking-widest font-bold">LAGOS • LONDON • HOUSTON</span>
+            </div>
+
+            <div className="mt-auto pt-20 flex flex-col items-center gap-6">
+              <div className="flex items-center gap-4 text-white/40">
+                <Globe size={20} className="text-electric-blue" />
+                <span className="font-poppins text-[10px] tracking-[0.3em] font-bold uppercase">Lagos • London • Houston</span>
               </div>
-            </motion.div>
+              <div className="text-[8px] font-poppins tracking-widest text-white/20 uppercase">
+                © 2026 ENSEW SERVICES. ALL RIGHTS RESERVED.
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

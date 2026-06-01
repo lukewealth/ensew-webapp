@@ -1,8 +1,37 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import LoadingIllustration from "@/components/LoadingIllustration";
 import Skeleton from "@/components/Skeleton";
 
 export default function Loading() {
+  const [isReturning, setIsReturning] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isReturningVisitor = document.documentElement.classList.contains("returning-visitor");
+      if (isReturningVisitor) {
+        setTimeout(() => setIsReturning(true), 0);
+      }
+    }
+  }, []);
+
+  if (isReturning) {
+    return (
+      <div className="flex flex-col min-h-screen bg-background p-6">
+        <div className="pt-20 space-y-8 animate-pulse">
+           <div className="h-8 bg-surface-dim rounded-full w-1/3" />
+           <div className="h-32 bg-surface-dim rounded-2xl w-full" />
+           <div className="grid grid-cols-3 gap-6">
+             <div className="h-40 bg-surface-dim rounded-xl" />
+             <div className="h-40 bg-surface-dim rounded-xl" />
+             <div className="h-40 bg-surface-dim rounded-xl" />
+           </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <div className="pt-32 pb-16 flex flex-col items-center justify-center space-y-8 px-6">

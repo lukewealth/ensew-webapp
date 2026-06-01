@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Package, Search, MapPin, Flag, Truck, Shield, Clock, CheckCircle, Download, Loader2, MessageSquare } from "lucide-react";
 
 interface ShipmentLog {
@@ -31,14 +32,21 @@ const TrackPage = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [shipment, setShipment] = useState<Shipment | null>(null);
   const [error, setError] = useState("");
+  const [cachedShipments, setCachedShipments] = useLocalStorage<Record<string, Shipment>>("ensew_tracked_shipments", {});
 
   const handleTrack = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!trackingId) return;
 
+    // Check cache first
+    if (cachedShipments[trackingId]) {
+      setShipment(cachedShipments[trackingId]);
+    } else {
+      setShipment(null);
+    }
+
     setIsSearching(true);
     setError("");
-    setShipment(null);
 
     try {
       const response = await fetch(`/api/track?id=${trackingId}`);
@@ -46,11 +54,18 @@ const TrackPage = () => {
 
       if (response.ok) {
         setShipment(data);
+        // Persist to local cache for future visits
+        setCachedShipments({ ...cachedShipments, [trackingId]: data });
       } else {
-        setError(data.error || "Shipment not found. Please check the ID.");
+        if (!cachedShipments[trackingId]) {
+          setError(data.error || "Shipment not found. Please check the ID.");
+          setShipment(null);
+        }
       }
     } catch (err) {
-      setError("An error occurred while tracking. Please try again.");
+      if (!cachedShipments[trackingId]) {
+        setError("An error occurred while tracking. Please try again.");
+      }
     } finally {
       setIsSearching(false);
     }

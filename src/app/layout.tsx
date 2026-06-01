@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter, Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import CookieConsent from "@/components/CookieConsent";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -96,6 +98,21 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${montserrat.variable} ${inter.variable} ${poppins.variable} h-full antialiased`}
     >
+      <head>
+        <Script id="visitor-detection" strategy="beforeInteractive">
+          {`
+            (function() {
+              try {
+                const visited = localStorage.getItem('ensew_visited');
+                if (visited) {
+                  document.documentElement.classList.add('returning-visitor');
+                }
+                localStorage.setItem('ensew_visited', 'true');
+              } catch (e) {}
+            })();
+          `}
+        </Script>
+      </head>
       <body className="bg-background text-on-surface font-inter min-h-full flex flex-col transition-colors duration-300">
         <ThemeProvider
           attribute="class"
@@ -105,6 +122,7 @@ export default function RootLayout({
         >
           <ScrollProgress />
           {children}
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>
