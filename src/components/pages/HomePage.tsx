@@ -52,13 +52,25 @@ const HomePage = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-navy">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-black/50 z-10 backdrop-blur-[1px]"></div>
+            {/* Primary Background Layer */}
+            <div className="absolute inset-0 bg-[#020B1C] z-0"></div>
+            
+            {/* Seamless Gradient Overlays */}
+            <div className="absolute inset-0 hero-seamless-overlay z-10 opacity-90"></div>
+            
+            {/* Ambient Blue Glows */}
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-electric-blue/10 blur-[120px] rounded-full z-5 animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-navy-light/20 blur-[150px] rounded-full z-5"></div>
+            
+            {/* Cinematic Vignette */}
+            <div className="absolute inset-0 bg-radial-vignette z-15 pointer-events-none"></div>
+
             <img 
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9gMY8PbEN61fUeZLUcauVmUs6GJf8uykckU3_XB1USAFIJRcpBFdoAuiqzrT4AASGYhD9VG4yBn6bFXUG73JLhiAEEbGGQ_SI0auEOdRJNHeDp92ta2cu4qSVqeW6z9FDnz6ByKx85k2JjkqEy51WWdVkMrEIQ3oUavdRZYqWOLO1BBt8MnfjVqzuOlyVfbqvQBHugnh6kDDtVrqlEPn20IhDULT0ckrhdx6CKxwtshDjfPMdfqkrdI7pSCesLtJtAGF1tWHLqhjz" 
               alt="Industrial Hero" 
-              className="w-full h-full object-cover scale-105 animate-slow-zoom"
+              className="w-full h-full object-cover scale-105 animate-slow-zoom mix-blend-overlay opacity-60"
             />
           </div>
 

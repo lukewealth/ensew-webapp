@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { Globe, Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
-import ScheduleCall from "./ScheduleCall";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -56,15 +55,16 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 transition-all duration-700 ease-in-out ${
         isScrolled || isMobileMenuOpen
-          ? "bg-surface/90 backdrop-blur-2xl border-b border-white/5 shadow-2xl"
+          ? "nav-glassmorphism translate-y-0 shadow-[0_0_50px_rgba(0,180,255,0.1)]"
           : "bg-transparent"
       }`}
     >
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/40 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/images/logo.jpeg" alt="ENSEW Logo" className="h-10 w-auto rounded" />
+          <img src="/images/logo.png" alt="ENSEW Logo" className="h-10 w-auto rounded" />
           <span className="text-2xl font-montserrat font-extrabold tracking-tighter text-on-surface hidden sm:block">
             ENSEW<span className="text-gold">.</span>
           </span>
@@ -127,9 +127,6 @@ const Header = () => {
       </nav>
 
       <div className="flex items-center gap-6">
-        <div className="hidden sm:block">
-          <ScheduleCall />
-        </div>
         <ThemeToggle />
         <Globe className="hidden lg:block text-electric-blue cursor-pointer w-5 h-5 hover:text-gold transition-colors" />
         <Link
@@ -203,7 +200,6 @@ const Header = () => {
               transition={{ delay: 0.5 }}
               className="mt-8 space-y-4"
             >
-              <ScheduleCall />
               <Link
                 href="/contact"
                 className="w-full bg-gold text-navy flex items-center justify-center gap-3 py-5 text-lg font-poppins font-bold rounded-2xl shadow-xl shadow-gold/20"

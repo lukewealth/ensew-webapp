@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, MessageSquare, Clock, Send, CheckCircle, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, MessageSquare, Clock, Send, CheckCircle, Loader2, Calendar } from "lucide-react";
 import GoogleMapComponent from "@/components/GoogleMap";
+import ScheduleCall from "@/components/ScheduleCall";
 
 const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -112,6 +113,15 @@ const ContactPage = () => {
                         <p className="text-on-surface-variant text-sm">Mon - Fri: 8:00 AM - 6:00 PM</p>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                <div className="glass-card p-8 rounded-2xl border border-white/5 text-center">
+                  <Calendar className="text-gold w-10 h-10 mx-auto mb-4" />
+                  <h4 className="text-white font-bold mb-2 uppercase tracking-widest">Schedule a Call</h4>
+                  <p className="text-on-surface-variant text-sm mb-6">Preferred a direct conversation? Book a time slot that works for you.</p>
+                  <div className="flex justify-center">
+                    <ScheduleCall />
                   </div>
                 </div>
 

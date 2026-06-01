@@ -194,3 +194,37 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 1000px 100%;
   animation: shimmer 2s infinite linear;
 }
+
+/* Premium Styles */
+.premium-header-gradient {
+  background: linear-gradient(
+    to bottom,
+    #020B1C 0%,
+    rgba(2, 11, 28, 0.95) 40%,
+    rgba(2, 11, 28, 0.8) 70%,
+    transparent 100%
+  );
+}
+
+.hero-seamless-overlay {
+  background: linear-gradient(
+    to bottom,
+    #020B1C 0%,
+    rgba(2, 11, 28, 0.8) 20%,
+    rgba(4, 22, 51, 0.4) 50%,
+    rgba(4, 22, 51, 0.6) 80%,
+    #020B1C 100%
+  );
+}
+
+.nav-glassmorphism {
+  background: rgba(2, 11, 28, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 180, 255, 0.05);
+}
+
+.bg-radial-vignette {
+  background: radial-gradient(circle, transparent 40%, rgba(2, 11, 28, 0.8) 100%);
+}

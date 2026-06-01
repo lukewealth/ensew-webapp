@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description: "Smart industrial solutions, logistics, and supply chain excellence across Nigeria and international markets.",
     images: [
       {
-        url: "/opengraph-image.jpeg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "ENSEW Services Limited - Global Industrial Solutions",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ENSEW Services Limited | Global Industrial Solutions",
     description: "Building Global Business Connections Through Smart Industrial Solutions.",
-    images: ["/twitter-image.jpeg"],
+    images: ["/twitter-image.png"],
   },
   robots: {
     index: true,
