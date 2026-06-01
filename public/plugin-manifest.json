@@ -1,0 +1,23 @@
+{
+  "display_name": "ENSEW Global Logistics Terminal",
+  "description": "Enterprise logistics management and shipment tracking terminal.",
+  "logo_url": "images/logo.png",
+  "locale": "en",
+  "services": [
+    "MAIL",
+    "CRM"
+  ],
+  "storage": true,
+  "widgets": [
+    {
+      "name": "Logistics Dashboard",
+      "type": "tab",
+      "url": "/admin/dashboard"
+    },
+    {
+      "name": "Track Consignment",
+      "type": "widget",
+      "url": "/track"
+    }
+  ]
+}

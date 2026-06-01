@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="w-full py-16 px-6 md:px-12 bg-surface-dim border-t border-white/10 mt-auto">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
         <Link href="/" className="flex flex-col items-center gap-4">
-          <img src="/images/logo.png" alt="ENSEW Logo" className="h-16 w-auto rounded-lg" />
+          <img src="/images/logo.png" alt="ENSEW Logo" className="h-32 w-auto rounded-lg" />
         </Link>
         
         <div className="flex flex-wrap justify-center gap-8 text-xs font-poppins tracking-widest uppercase">

@@ -201,7 +201,7 @@ const HomePage = () => {
 
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
              <motion.button 
-               onClick={scrollToContent}
+               onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" })}
                animate={{ y: [0, 10, 0] }} 
                transition={{ repeat: Infinity, duration: 2 }}
                className="text-white/30 hover:text-gold transition-colors cursor-pointer"

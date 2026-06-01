@@ -7,15 +7,18 @@
       "destination": "London Distribution Center",
       "weight": "1,240 kg",
       "pieces": "48 Units",
-      "service": "Priority",
-      "type": "Freight",
-      "expectedDelivery": "Oct 24, 2024",
+      "service": "Priority Air Freight",
+      "type": "Heavy Freight",
+      "expectedDelivery": "Oct 24, 2026",
       "progress": 65,
       "location": "Gulf of Aden",
+      "customerName": "Dr. Samuel Okoro",
+      "customerEmail": "samuel.okoro@enterprise.com",
+      "dimensions": "120 x 80 x 100 cm",
       "logs": [
-        { "date": "Oct 21, 2024, 14:22", "event": "Entered International Waters", "details": "Vessel ID: ENSEW-PEGASUS | Speed: 22 knots" },
-        { "date": "Oct 20, 2024, 11:05", "event": "Customs Documentation Verified", "details": "Regional Hub - Port of Salalah" },
-        { "date": "Oct 19, 2024, 08:30", "event": "Departed Origin Hub", "details": "Port of Singapore Terminal 2" }
+        { "date": "2026-05-31 14:22", "event": "Entered International Waters", "location": "Gulf of Aden", "details": "Vessel ID: ENSEW-PEGASUS | Speed: 22 knots" },
+        { "date": "2026-05-30 11:05", "event": "Customs Documentation Verified", "location": "Port of Salalah, OM", "details": "Regional Hub clearance completed" },
+        { "date": "2026-05-29 08:30", "event": "Departed Origin Hub", "location": "Singapore", "details": "Port of Singapore Terminal 2" }
       ]
     }
   ]
