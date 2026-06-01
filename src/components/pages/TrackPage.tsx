@@ -62,7 +62,7 @@ const TrackPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#020B1C]">
+    <div className="flex flex-col min-h-screen bg-[#020B1C] bg-industrial-grid">
       <Header />
       
       <main className="pt-20">

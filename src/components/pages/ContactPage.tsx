@@ -57,10 +57,10 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#020B1C] bg-industrial-grid">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-20 animate-entrance">
         <section className="py-24 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">

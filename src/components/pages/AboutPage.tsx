@@ -35,10 +35,10 @@ const experts = [
 
 const AboutPage = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#020B1C] bg-industrial-grid">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-20 animate-entrance">
         {/* Page Header */}
         <section className="relative py-32 overflow-hidden border-b border-white/5">
           <div className="absolute inset-0 bg-navy/80 z-10 backdrop-blur-sm"></div>

@@ -152,7 +152,7 @@ const AdminDashboardPage = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#020B1C] text-white">
+    <div className="flex min-h-screen bg-[#020B1C] text-white bg-industrial-grid">
       {/* Sidebar */}
       <aside className="w-72 bg-[#051128] border-r border-white/5 flex flex-col fixed h-full z-40">
         <div className="p-8">

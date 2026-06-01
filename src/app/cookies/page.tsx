@@ -4,10 +4,10 @@ import { Cookie, Settings, Info, CheckCircle2, ShieldCheck } from "lucide-react"
 
 export default function CookiesPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#020B1C]">
+    <div className="flex flex-col min-h-screen bg-[#020B1C] bg-industrial-grid">
       <Header />
       
-      <main className="pt-40 pb-32">
+      <main className="pt-40 pb-32 animate-entrance">
         <section className="max-w-5xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
             <div className="bg-gold/10 p-3 rounded-2xl border border-gold/20">
