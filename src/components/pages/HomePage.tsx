@@ -387,11 +387,11 @@ const HomePage = () => {
             <p className="text-lg md:text-xl text-on-surface-variant mb-12 font-inter max-w-2xl mx-auto">
               Partner with ENSEW Services Limited and experience the synergy of elite industrial expertise and smart digital solutions.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link href="/contact" className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase shadow-2xl shadow-gold/20 text-lg">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+              <Link href="/contact" className="w-full sm:w-auto gold-button px-10 md:px-12 py-4 md:py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase shadow-2xl shadow-gold/20 text-base md:text-lg">
                 Connect With An Expert
               </Link>
-              <Link href="/contact" className="px-12 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase border border-white/10 hover:bg-white/5 transition-all">
+              <Link href="/contact" className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase border border-white/10 hover:bg-white/5 transition-all">
                 Get In Touch
               </Link>
             </div>

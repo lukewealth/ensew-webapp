@@ -65,9 +65,6 @@ const Header = () => {
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2">
           <img src="/images/logo.png" alt="ENSEW Logo" className="h-10 w-auto rounded" />
-          <span className="text-2xl font-montserrat font-extrabold tracking-tighter text-on-surface hidden sm:block">
-            ENSEW<span className="text-gold">.</span>
-          </span>
         </Link>
       </div>
 

@@ -2,11 +2,20 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, MessageSquare, Clock, Send, CheckCircle, Loader2, Calendar } from "lucide-react";
-import GoogleMapComponent from "@/components/GoogleMap";
 import ScheduleCall from "@/components/ScheduleCall";
+
+const GoogleMapComponent = dynamic(() => import("@/components/GoogleMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full bg-navy/50 flex items-center justify-center">
+      <div className="animate-pulse text-gold font-montserrat text-xs tracking-widest uppercase">Loading Map...</div>
+    </div>
+  )
+});
 
 const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
