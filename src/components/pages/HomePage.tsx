@@ -67,11 +67,15 @@ const HomePage = () => {
             {/* Cinematic Vignette */}
             <div className="absolute inset-0 bg-radial-vignette z-15 pointer-events-none"></div>
 
-            <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9gMY8PbEN61fUeZLUcauVmUs6GJf8uykckU3_XB1USAFIJRcpBFdoAuiqzrT4AASGYhD9VG4yBn6bFXUG73JLhiAEEbGGQ_SI0auEOdRJNHeDp92ta2cu4qSVqeW6z9FDnz6ByKx85k2JjkqEy51WWdVkMrEIQ3oUavdRZYqWOLO1BBt8MnfjVqzuOlyVfbqvQBHugnh6kDDtVrqlEPn20IhDULT0ckrhdx6CKxwtshDjfPMdfqkrdI7pSCesLtJtAGF1tWHLqhjz" 
-              alt="Industrial Hero" 
-              className="w-full h-full object-cover scale-105 animate-slow-zoom mix-blend-overlay opacity-60"
-            />
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/x-G6cEuFDJM?autoplay=1&mute=1&loop=1&playlist=x-G6cEuFDJM&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&enablejsapi=1"
+                className="w-full h-[150%] md:h-[120%] lg:h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-40 mix-blend-overlay pointer-events-none"
+                style={{ border: 'none', width: '100vw', height: '56.25vw', minHeight: '100vh', minWidth: '177.77vh' }}
+                allow="autoplay; encrypted-media"
+                title="Industrial Background Video"
+              ></iframe>
+            </div>
           </div>
 
           <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
@@ -120,9 +124,14 @@ const HomePage = () => {
                 >
                   Track Your Shipment <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <button className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/10 transition-all border border-white/20 backdrop-blur-md group">
+                <a 
+                  href="https://www.youtube.com/watch?v=x-G6cEuFDJM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/10 transition-all border border-white/20 backdrop-blur-md group"
+                >
                   <div className="bg-gold/20 p-2 rounded-full transition-transform group-hover:scale-110"><Play size={14} className="fill-gold text-gold" /></div> Watch Story
-                </button>
+                </a>
               </motion.div>
             </motion.div>
           </div>
