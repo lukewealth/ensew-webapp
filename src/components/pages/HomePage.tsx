@@ -1,15 +1,13 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { 
   Globe, 
   Shield, 
-  TrendingUp, 
-  Users, 
   ChevronRight, 
   Play, 
   CheckCircle, 
@@ -23,7 +21,52 @@ import {
   ArrowRight
 } from "lucide-react";
 
+const Typewriter = ({ text, delay = 0, speed = 0.05, className = "" }: { text: string, delay?: number, speed?: number, className?: string }) => {
+  return (
+    <span className={className}>
+      {text.split("").map((char, index) => (
+        <motion.span
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.01,
+            delay: delay + (index * speed),
+            ease: "linear"
+          }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
 const HomePage = () => {
+  const [typewriterFinished, setTypewriterFinished] = React.useState(false);
+  const [rotatingTextIndex, setRotatingTextIndex] = React.useState(0);
+  
+  const infoTexts = React.useMemo(() => [
+    "Optimizing International Trade Routes",
+    "Advanced Logistics & Supply Systems",
+    "Elite Industrial Contracting Partners",
+    "Smart Digital Technical Integration"
+  ], []);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setTypewriterFinished(true);
+    }, 4500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setRotatingTextIndex((prev) => (prev + 1) % infoTexts.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [infoTexts.length]);
+
   const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -67,15 +110,19 @@ const HomePage = () => {
             {/* Cinematic Vignette */}
             <div className="absolute inset-0 bg-radial-vignette z-15 pointer-events-none"></div>
 
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <motion.div 
+              animate={{ opacity: typewriterFinished ? 0.7 : 0.4 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+            >
               <iframe
                 src="https://www.youtube.com/embed/x-G6cEuFDJM?autoplay=1&mute=1&loop=1&playlist=x-G6cEuFDJM&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&enablejsapi=1"
-                className="w-full h-[150%] md:h-[120%] lg:h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-40 mix-blend-overlay pointer-events-none"
+                className="w-full h-[150%] md:h-[120%] lg:h-[150%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover mix-blend-overlay pointer-events-none"
                 style={{ border: 'none', width: '100vw', height: '56.25vw', minHeight: '100vh', minWidth: '177.77vh' }}
                 allow="autoplay; encrypted-media"
                 title="Industrial Background Video"
               ></iframe>
-            </div>
+            </motion.div>
           </div>
 
           <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
@@ -95,7 +142,7 @@ const HomePage = () => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
                     </span>
-                    Global Industrial Excellence
+                    <Typewriter text="Driving Global Industrial Excellence" speed={0.03} />
                   </span>
                 </div>
               </motion.div>
@@ -104,15 +151,31 @@ const HomePage = () => {
                 variants={fadeInUp}
                 className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow uppercase"
               >
-                Building Global <span className="text-gold">Business</span> Connections.
+                <Typewriter text="Building Resilient" delay={1.2} speed={0.05} /> <br />
+                <Typewriter text="Supply Chain" delay={2.2} speed={0.05} className="text-gold" /> <br />
+                <Typewriter text="Solutions." delay={3.2} speed={0.05} />
               </motion.h1>
 
-              <motion.p 
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-on-surface-variant mb-12 max-w-3xl mx-auto leading-relaxed font-inter"
+              <motion.div
+                animate={{ opacity: typewriterFinished ? 0.6 : 1 }}
+                transition={{ duration: 1 }}
+                className="min-h-[2rem] mb-12"
               >
-                ENSEW Services Limited provides world-class logistics and industrial frameworks designed for the scale and complexity of modern international trade.
-              </motion.p>
+                <div className="relative flex justify-center items-center overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.p
+                      key={rotatingTextIndex}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      className="text-lg md:text-xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed font-inter italic"
+                    >
+                      {infoTexts[rotatingTextIndex]}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
+              </motion.div>
               
               <motion.div 
                 variants={fadeInUp}
