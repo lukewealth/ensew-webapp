@@ -128,7 +128,7 @@ const Header = () => {
         <Globe className="hidden lg:block text-electric-blue cursor-pointer w-5 h-5 hover:text-gold transition-colors" />
         <Link
           href="/contact"
-          className="hidden md:flex items-center gap-2 bg-navy-light px-7 py-3 text-white font-poppins text-[10px] font-bold tracking-[0.1em] rounded-lg hover:bg-gold hover:text-navy active:scale-95 transition-all border border-white/10"
+          className="hidden md:flex items-center gap-2 bg-navy-light px-7 py-3 text-white font-poppins text-[10px] font-bold tracking-[0.1em] rounded-lg hover:bg-gold hover:text-navy hover:scale-110 active:scale-95 transition-all border border-white/10"
         >
           GET IN TOUCH <ArrowRight size={14} />
         </Link>
