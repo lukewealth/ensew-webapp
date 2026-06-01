@@ -35,6 +35,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -64,7 +65,7 @@ const Header = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-navy/40 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="ENSEW Logo" className="h-10 w-auto rounded" />
+          <img src="/images/logo.png" alt="ENSEW Logo" className="h-10 w-auto rounded hover:scale-105 transition-transform" />
         </Link>
       </div>
 
@@ -125,7 +126,7 @@ const Header = () => {
 
       <div className="flex items-center gap-6">
         <ThemeToggle />
-        <Globe className="hidden lg:block text-electric-blue cursor-pointer w-5 h-5 hover:text-gold transition-colors" />
+        <Globe className="hidden lg:block text-electric-blue cursor-pointer w-5 h-5 hover:text-gold transition-colors hover:scale-110" />
         <Link
           href="/contact"
           className="hidden md:flex items-center gap-2 bg-navy-light px-7 py-3 text-white font-poppins text-[10px] font-bold tracking-[0.1em] rounded-lg hover:bg-gold hover:text-navy hover:scale-110 active:scale-95 transition-all border border-white/10"
@@ -134,8 +135,11 @@ const Header = () => {
         </Link>
         
         <button
-          className="lg:hidden text-on-surface p-2 -mr-2 flex items-center justify-center min-w-[44px] min-h-[44px]"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden text-on-surface p-2 -mr-2 flex items-center justify-center min-w-[44px] min-h-[44px] hover:scale-110 transition-all"
+          onClick={() => {
+            if (isMobileMenuOpen) setMobileDropdownOpen(null);
+            setIsMobileMenuOpen(!isMobileMenuOpen);
+          }}
           aria-label="Toggle Menu"
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -162,16 +166,63 @@ const Header = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.1 + index * 0.05 }}
+                  className="flex flex-col"
                 >
-                  <Link
-                    href={link.href}
-                    className={`font-montserrat text-2xl font-bold tracking-tight ${
-                      pathname === link.href ? "text-gold" : "text-on-surface"
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={link.href}
+                      className={`font-montserrat text-2xl font-bold tracking-tight hover:scale-105 transition-all inline-block origin-left ${
+                        pathname === link.href ? "text-gold" : "text-on-surface"
+                      }`}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setMobileDropdownOpen(null);
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                    {link.dropdown && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setMobileDropdownOpen(mobileDropdownOpen === link.name ? null : link.name);
+                        }}
+                        className="p-2 text-on-surface-variant hover:text-gold transition-colors"
+                      >
+                        <ChevronDown 
+                          size={24} 
+                          className={`transition-transform duration-300 ${mobileDropdownOpen === link.name ? 'rotate-180' : ''}`} 
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  <AnimatePresence>
+                    {link.dropdown && mobileDropdownOpen === link.name && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col gap-4 pl-4 pt-4 pb-2 border-l-2 border-gold/20 ml-2">
+                          {link.dropdown.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className="text-lg font-poppins tracking-widest uppercase text-on-surface-variant hover:text-gold transition-colors"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setMobileDropdownOpen(null);
+                              }}
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
               <motion.div
@@ -181,10 +232,13 @@ const Header = () => {
               >
                 <Link
                   href="/track"
-                  className={`font-montserrat text-2xl font-bold tracking-tight ${
+                  className={`font-montserrat text-2xl font-bold tracking-tight hover:scale-105 transition-all inline-block origin-left ${
                     pathname === "/track" ? "text-gold" : "text-on-surface"
                   }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setMobileDropdownOpen(null);
+                  }}
                 >
                   TRACK PARCEL
                 </Link>
@@ -199,13 +253,16 @@ const Header = () => {
             >
               <Link
                 href="/contact"
-                className="w-full bg-gold text-navy flex items-center justify-center gap-3 py-5 text-lg font-poppins font-bold rounded-2xl shadow-xl shadow-gold/20"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full bg-gold text-navy flex items-center justify-center gap-3 py-5 text-lg font-poppins font-bold rounded-2xl shadow-xl shadow-gold/20 hover:scale-105 transition-all"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setMobileDropdownOpen(null);
+                }}
               >
                 GET IN TOUCH <ArrowRight />
               </Link>
               <div className="flex justify-center gap-8 mt-12 text-on-surface-variant">
-                <Globe className="w-6 h-6" />
+                <Globe className="w-6 h-6 hover:scale-110 transition-all cursor-pointer" />
                 <span className="font-poppins text-xs tracking-widest font-bold">LAGOS • LONDON • HOUSTON</span>
               </div>
             </motion.div>
