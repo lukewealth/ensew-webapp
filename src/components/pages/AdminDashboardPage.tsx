@@ -222,12 +222,12 @@ const AdminDashboardPage = () => {
               {/* Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {[
-                  { icon: Package, label: "Live Transits", value: "1,284", trend: "+12%", color: "text-gold", bg: "bg-gold/5" },
-                  { icon: TrendingUp, label: "Volume (MT)", value: "42.8k", trend: "+5.2%", color: "text-blue-400", bg: "bg-blue-400/5" },
-                  { icon: Clock, label: "SLA Adherence", value: "99.4%", trend: "98% Target", color: "text-green-400", bg: "bg-green-400/5" },
+                  { icon: Package, label: "Live Transits", value: "1,284", trend: "+12%", color: "text-brand-pink", bg: "bg-brand-pink/5" },
+                  { icon: TrendingUp, label: "Volume (MT)", value: "42.8k", trend: "+5.2%", color: "text-brand-purple", bg: "bg-brand-purple/5" },
+                  { icon: Clock, label: "SLA Adherence", value: "99.4%", trend: "98% Target", color: "text-brand-blue", bg: "bg-brand-blue/5" },
                   { icon: DollarSign, label: "Daily Revenue", value: "₦142.4M", trend: "+18%", color: "text-gold", bg: "bg-gold/5" },
                 ].map((metric) => (
-                  <div key={metric.label} className="bg-[#051128] p-8 rounded-[2rem] border border-white/5 hover:border-gold/30 transition-all group relative overflow-hidden">
+                  <div key={metric.label} className="bg-[#051128] p-8 rounded-[2rem] border border-white/5 hover:border-white/20 transition-all group relative overflow-hidden">
                     <div className={`absolute -right-4 -top-4 w-24 h-24 rounded-full ${metric.bg} blur-3xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
                     <div className="flex justify-between items-start mb-6 relative z-10">
                       <div className={`p-4 bg-[#0A1A3A] rounded-2xl ${metric.color} shadow-lg`}>
@@ -245,7 +245,9 @@ const AdminDashboardPage = () => {
               <div className="bg-[#051128] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl">
                 <div className="p-10 border-b border-white/5 flex flex-col xl:flex-row justify-between xl:items-center bg-[#051128]/50 gap-6">
                   <div>
-                     <h2 className="text-2xl font-montserrat font-extrabold text-white uppercase tracking-tight mb-1">Shipment Command Center</h2>
+                     <h2 className="text-2xl font-montserrat font-extrabold text-white uppercase tracking-tight mb-1">
+                       Shipment <span className="brand-gradient-text">Command Center</span>
+                     </h2>
                      <p className="text-[10px] font-poppins text-white/40 uppercase tracking-widest font-bold">Managing {shipments.length} Active Global Logs</p>
                   </div>
                   <div className="flex flex-wrap gap-4">

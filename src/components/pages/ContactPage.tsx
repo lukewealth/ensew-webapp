@@ -237,7 +237,7 @@ const ContactPage = () => {
                   <button 
                     type="submit"
                     disabled={isSubmitting || isSubmitted}
-                    className={`gold-button w-full py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center justify-center gap-2 transition-all ${isSubmitted ? 'bg-green-500!' : ''}`}
+                    className={`w-full py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center justify-center gap-2 transition-all ${isSubmitted ? 'bg-green-500!' : 'brand-gradient-bg hover:scale-[1.02] shadow-xl shadow-brand-purple/20'}`}
                   >
                     {isSubmitting ? (
                       <>Processing <Loader2 className="animate-spin" size={18} /></>

@@ -149,20 +149,20 @@ const TrackPage = () => {
                       {/* Terminal Line */}
                       <div className="absolute top-[68px] left-0 w-full h-[3px] bg-white/5 z-0 rounded-full"></div>
                       <div 
-                        className="absolute top-[68px] left-0 h-[3px] bg-gradient-to-r from-gold to-white z-0 transition-all duration-1500 shadow-[0_0_15px_rgba(212,175,55,0.5)] rounded-full" 
+                        className="absolute top-[68px] left-0 h-[3px] bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue z-0 transition-all duration-1500 shadow-[0_0_15px_rgba(0,180,255,0.3)] rounded-full" 
                         style={{ width: `${shipment.progress}%` }}
                       ></div>
                       
                       {/* Operational Milestones */}
                       {[
-                        { icon: CheckCircle, label: "Origin Hub", color: "text-gold" },
-                        { icon: Truck, label: "Transit", color: shipment.progress >= 40 ? "text-gold" : "text-white/10" },
-                        { icon: Shield, label: "Customs", color: shipment.progress >= 70 ? "text-gold" : "text-white/10" },
-                        { icon: Clock, label: "Arrival", color: shipment.progress >= 90 ? "text-gold" : "text-white/10" },
-                        { icon: Package, label: "Delivered", color: shipment.progress >= 100 ? "text-gold" : "text-white/10" }
+                        { icon: CheckCircle, label: "Origin Hub" },
+                        { icon: Truck, label: "Transit" },
+                        { icon: Shield, label: "Customs" },
+                        { icon: Clock, label: "Arrival" },
+                        { icon: Package, label: "Delivered" }
                       ].map((step, i) => (
                         <div key={i} className="relative z-10 flex flex-col items-center">
-                          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ring-8 ring-[#051128] transition-all duration-500 ${shipment.progress >= (i * 25) ? 'bg-gold text-navy scale-110 shadow-lg shadow-gold/20' : 'bg-[#0A1A3A] text-white/10'}`}>
+                          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ring-8 ring-[#051128] transition-all duration-500 ${shipment.progress >= (i * 25) ? 'brand-gradient-bg text-navy scale-110 shadow-lg' : 'bg-[#0A1A3A] text-white/10'}`}>
                             <step.icon size={24} />
                           </div>
                           <span className={`mt-6 font-poppins text-[10px] font-black uppercase tracking-[0.2em] ${shipment.progress >= (i * 25) ? 'text-white' : 'text-white/10'}`}>

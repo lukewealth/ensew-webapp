@@ -116,7 +116,9 @@ const ServicesPage = () => {
               >
                 <div className="flex-1 space-y-8">
                   <div className="flex items-center gap-4">
-                    <service.icon className="text-gold w-10 h-10" />
+                    <div className={`p-3 rounded-2xl bg-white/5 border border-white/10 ${index % 3 === 0 ? 'text-brand-pink' : index % 3 === 1 ? 'text-brand-purple' : 'text-brand-blue'}`}>
+                      <service.icon className="w-10 h-10" />
+                    </div>
                     <h2 className="text-3xl font-montserrat font-bold text-white uppercase tracking-tight">{service.title}</h2>
                   </div>
                   <p className="text-lg text-on-surface-variant leading-relaxed font-inter">

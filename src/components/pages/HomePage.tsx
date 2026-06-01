@@ -160,7 +160,7 @@ const HomePage = () => {
                 className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-10 tracking-tighter leading-[0.9] text-glow uppercase"
               >
                 <Typewriter text="Building Resilient" delay={1.2} speed={0.05} /> <br />
-                <Typewriter text="Supply Chain" delay={2.2} speed={0.05} className="text-gold" /> <br />
+                <Typewriter text="Supply Chain" delay={2.2} speed={0.05} className="brand-gradient-text" /> <br />
                 <Typewriter text="Solutions." delay={3.2} speed={0.05} />
               </motion.h1>
 
@@ -182,6 +182,19 @@ const HomePage = () => {
                       {infoTexts[rotatingTextIndex]}
                     </motion.p>
                   </AnimatePresence>
+                </div>
+              </motion.div>
+              
+              <motion.div
+                variants={fadeInUp}
+                className="flex flex-col items-center gap-6 mb-12"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="h-px w-12 bg-brand-pink"></div>
+                  <span className="text-[10px] font-poppins font-black tracking-[0.4em] uppercase text-white/40">
+                    Moving <span className="text-brand-pink">Faster</span> and <span className="text-brand-blue">Smarter</span>
+                  </span>
+                  <div className="h-px w-12 bg-brand-blue"></div>
                 </div>
               </motion.div>
               
