@@ -138,9 +138,14 @@ const ContactPage = () => {
                   <MessageSquare className="text-electric-blue w-10 h-10 mx-auto mb-4" />
                   <h4 className="text-white font-bold mb-2 uppercase tracking-widest">Quick Support</h4>
                   <p className="text-on-surface-variant text-sm mb-6">Need immediate assistance? Chat with us on WhatsApp.</p>
-                  <button className="w-full bg-navy border border-white/10 text-white font-poppins text-xs font-bold py-3 rounded-lg hover:bg-gold hover:text-navy transition-all">
+                  <a 
+                    href="https://wa.me/2347038661947"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-navy border border-white/10 text-white font-poppins text-xs font-bold py-3 rounded-lg hover:bg-gold hover:text-navy transition-all text-center"
+                  >
                     WHATSAPP US
-                  </button>
+                  </a>
                 </div>
               </div>
 

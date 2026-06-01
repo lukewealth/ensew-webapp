@@ -89,6 +89,13 @@ const HomePage = () => {
     }
   };
 
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -125,7 +132,8 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
+          {/* Added pt-48 to move content downwards (approx 3x based on standard spacing) */}
+          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-48">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -133,7 +141,7 @@ const HomePage = () => {
             >
               <motion.div
                 variants={fadeInUp}
-                className="inline-block group mb-8 cursor-default"
+                className="inline-block group mb-12 cursor-default"
               >
                 <div className="relative bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 overflow-hidden transition-all duration-500 group-hover:border-gold/50 group-hover:bg-gold/5 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
@@ -149,7 +157,7 @@ const HomePage = () => {
 
               <motion.h1 
                 variants={fadeInUp}
-                className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow uppercase"
+                className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-10 tracking-tighter leading-[0.9] text-glow uppercase"
               >
                 <Typewriter text="Building Resilient" delay={1.2} speed={0.05} /> <br />
                 <Typewriter text="Supply Chain" delay={2.2} speed={0.05} className="text-gold" /> <br />
@@ -179,34 +187,28 @@ const HomePage = () => {
               
               <motion.div 
                 variants={fadeInUp}
-                className="flex flex-col sm:flex-row items-center justify-center gap-6"
+                className="flex items-center justify-center"
               >
                 <Link 
                   href="/track" 
-                  className="gold-button px-10 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-2 group shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-95"
+                  className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 group shadow-2xl transition-all duration-300 hover:scale-[1.05] hover:-translate-y-1 active:scale-95"
                 >
-                  Track Your Shipment <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  Track Your Shipment <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <a 
-                  href="https://www.youtube.com/watch?v=x-G6cEuFDJM"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-10 py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 hover:bg-white/10 transition-all border border-white/20 backdrop-blur-md group"
-                >
-                  <div className="bg-gold/20 p-2 rounded-full transition-transform group-hover:scale-110"><Play size={14} className="fill-gold text-gold" /></div> Watch Story
-                </a>
               </motion.div>
             </motion.div>
           </div>
 
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
-             <motion.div 
+             <motion.button 
+               onClick={scrollToContent}
                animate={{ y: [0, 10, 0] }} 
                transition={{ repeat: Infinity, duration: 2 }}
-               className="text-tertiary"
+               className="text-white/30 hover:text-gold transition-colors cursor-pointer"
+               aria-label="Scroll Down"
              >
                <ChevronRight size={40} className="rotate-90" />
-             </motion.div>
+             </motion.button>
           </div>
         </section>
 
