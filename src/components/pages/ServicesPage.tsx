@@ -15,6 +15,7 @@ export const metadata = {
 
 const services = [
   {
+    id: "import-export",
     title: "Import & Export Operations",
     icon: Globe,
     desc: "Seamless international trade solutions including customs brokerage, freight forwarding, and compliance management.",
@@ -22,6 +23,7 @@ const services = [
     process: ["Documentation", "Customs Clearance", "Freight Management", "Final Delivery"]
   },
   {
+    id: "logistics",
     title: "Logistics & Delivery",
     icon: Truck,
     desc: "Smart logistics frameworks designed for real-time visibility and speed across regional and global networks.",
@@ -29,6 +31,7 @@ const services = [
     process: ["Route Optimization", "Tracking", "Warehousing", "Last-mile Delivery"]
   },
   {
+    id: "industrial",
     title: "Industrial Supply",
     icon: Factory,
     desc: "Critical sourcing and distribution of high-performance machinery, components, and raw materials for heavy industry.",
@@ -36,6 +39,7 @@ const services = [
     process: ["Requirement Analysis", "Sourcing", "Quality Control", "Distribution"]
   },
   {
+    id: "contracting",
     title: "General Contracting",
     icon: Warehouse,
     desc: "End-to-end management of industrial infrastructure projects and large-scale technical engineering contracts.",
@@ -43,6 +47,7 @@ const services = [
     process: ["Planning", "Procurement", "Execution", "Project Handover"]
   },
   {
+    id: "representation",
     title: "Manufacturing Representation",
     icon: Briefcase,
     desc: "Acting as the local face for international manufacturers, handling marketing, sales, and distribution in Nigeria.",
@@ -50,6 +55,7 @@ const services = [
     process: ["Market Entry", "Branding", "Sales Strategy", "Local Support"]
   },
   {
+    id: "investment",
     title: "Investment Development",
     icon: BarChart,
     desc: "Identifying and developing strategic business opportunities and partnerships for sustainable growth.",
@@ -101,6 +107,7 @@ const ServicesPage = () => {
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
+                id={service.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

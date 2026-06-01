@@ -14,6 +14,7 @@ export const metadata = {
 
 const industries = [
   { 
+    id: "manufacturing",
     name: "Heavy Manufacturing", 
     icon: Factory, 
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB_Mu5GSfmxEd4NAx5ustmwyb9OIi82HlYogJPg37ldTTRRkKRA6BQHYOmTdFN7yWexDwdrrBAT1QsbwhoVBeHNrGNfNp4Om_8eKFUS6slIeu58ny9a9gUvokbuZsFGn68ilbvNY3GD74ykV7YwGl9Lo-HJCcnery9wUMGOmDszmW9l1_9jrB3_DWtj0XncNdYDJi4eorVnMXVOL2ve77-kW7UgO-w8aWznSjXftRzFCFlJPj9nu4O__eqSlao2we1Or1TrtF2jfHPF",
@@ -23,6 +24,7 @@ const industries = [
     source: "https://www.mckinsey.com/industries/advanced-electronics/our-insights/the-future-of-manufacturing"
   },
   { 
+    id: "oil-gas",
     name: "Energy & Utilities", 
     icon: Zap, 
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCA8REQHPAsE7fYVVq99EyTbdRpzD2_ASEqCm12oDeynjtNWLeANAJ_8fFF5A1i3goMZpkLLqKXh4qkeXDnhRknhD4pLjAdgJSIg6d_VXMDVzTfNBIphW_xxXhwUrUdzFYtoz_chXuZXZ6qsfG4JviThjBnCMQrVYPOge3aMJXfRrEpRssOxadF8Uv9qt_Wo7ZPHCyNzp1N8K2Ds0dr8MpJFKJLYZkLpIt6poNTL2rPYm_PDbbApTEXPOCp_gpAXAZEs8bBLH8RvGQc",
@@ -50,6 +52,7 @@ const industries = [
     source: "https://www.worldbank.org/en/topic/transport/brief/logistics-performance-index"
   },
   { 
+    id: "construction",
     name: "Infrastructure", 
     icon: Construction, 
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=800",
@@ -141,6 +144,7 @@ const IndustriesPage = () => {
             {industries.map((industry) => (
               <motion.div
                 key={industry.name}
+                id={industry.id}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
                 onClick={() => setSelectedIndustry(industry)}
