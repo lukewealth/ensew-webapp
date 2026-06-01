@@ -45,6 +45,11 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
