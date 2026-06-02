@@ -132,8 +132,8 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Increased pt to push content lower and added pb for bottom spacing balance */}
-          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-64 pb-48">
+          {/* Reduced pt from 64 to 32 to bring content closer to nav, and pb from 48 to 24 */}
+          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-32 pb-24">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -141,7 +141,7 @@ const HomePage = () => {
             >
               <motion.div
                 variants={fadeInUp}
-                className="inline-block group mb-12 cursor-default"
+                className="inline-block group mb-8 cursor-default"
               >
                 <div className="relative bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 overflow-hidden transition-all duration-500 group-hover:border-gold/50 group-hover:bg-gold/5 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
@@ -157,7 +157,7 @@ const HomePage = () => {
 
               <motion.h1 
                 variants={fadeInUp}
-                className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-10 tracking-tighter leading-[0.9] text-glow uppercase"
+                className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow uppercase"
               >
                 <Typewriter text="Building Resilient" delay={1.2} speed={0.05} /> <br />
                 <Typewriter text="Supply Chain" delay={2.2} speed={0.05} className="brand-gradient-text" /> <br />
@@ -167,7 +167,7 @@ const HomePage = () => {
               <motion.div
                 animate={{ opacity: typewriterFinished ? 0.6 : 1 }}
                 transition={{ duration: 1 }}
-                className="min-h-[2rem] mb-16"
+                className="min-h-[2rem] mb-12"
               >
                 <div className="relative flex justify-center items-center overflow-hidden">
                   <AnimatePresence mode="wait">
@@ -187,7 +187,7 @@ const HomePage = () => {
 
               <motion.div 
                 variants={fadeInUp}
-                className="flex flex-col items-center justify-center mb-64"
+                className="flex flex-col items-center justify-center mb-32"
               >
                 <Link 
                   href="/track" 
@@ -196,12 +196,12 @@ const HomePage = () => {
                   Track Your Shipment <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform duration-500" />
                 </Link>
 
-                {/* Anchor arrow icon moved directly under the button */}
+                {/* Anchor arrow icon directly under the button with reduced mt */}
                 <motion.button 
                    onClick={() => window.scrollTo({ top: document.documentElement.clientHeight * 1.1, behavior: "smooth" })}
                    animate={{ y: [0, 15, 0] }} 
                    transition={{ repeat: Infinity, duration: 2 }}
-                   className="mt-12 text-gold/60 hover:text-gold transition-all cursor-pointer group"
+                   className="mt-8 text-gold/60 hover:text-gold transition-all cursor-pointer group"
                    aria-label="Scroll Down"
                  >
                    <ChevronRight size={48} className="rotate-90 group-hover:scale-110 transition-transform" />
@@ -210,7 +210,7 @@ const HomePage = () => {
 
               <motion.div
                 variants={fadeInUp}
-                className="flex flex-col items-center gap-6 mt-12"
+                className="flex flex-col items-center gap-6 mt-8"
               >
                 <div className="flex items-center gap-4">
                   <div className="h-px w-12 bg-brand-pink"></div>
@@ -223,8 +223,8 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Superior UX transition: Significantly deeper blend and blur to body (700px height) */}
-          <div className="absolute bottom-0 left-0 w-full h-[700px] bg-gradient-to-t from-surface via-surface/90 to-transparent z-20 pointer-events-none backdrop-blur-[2px]"></div>
+          {/* Superior UX transition: Deeper blend and blur to body (500px height) */}
+          <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-surface via-surface/90 to-transparent z-20 pointer-events-none backdrop-blur-[1px]"></div>
         </section>
 
         {/* Introduction Section (Who We Are) */}
