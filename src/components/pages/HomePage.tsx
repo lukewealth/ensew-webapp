@@ -102,7 +102,7 @@ const HomePage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[110vh] flex items-center justify-center overflow-hidden bg-navy">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy">
           <div className="absolute inset-0 z-0">
             {/* Primary Background Layer */}
             <div className="absolute inset-0 bg-[#020B1C] z-0"></div>
@@ -132,8 +132,8 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Reduced pt from 64 to 32 to bring content closer to nav, and pb from 48 to 24 */}
-          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-32 pb-24">
+          {/* Reduced pt from 64 to 32 to bring content closer to nav, and pb from 48 to 12 */}
+          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-32 pb-12">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -187,7 +187,7 @@ const HomePage = () => {
 
               <motion.div 
                 variants={fadeInUp}
-                className="flex flex-col items-center justify-center mb-32"
+                className="flex flex-col items-center justify-center mb-16"
               >
                 <Link 
                   href="/track" 
@@ -210,7 +210,7 @@ const HomePage = () => {
 
               <motion.div
                 variants={fadeInUp}
-                className="flex flex-col items-center gap-6 mt-8"
+                className="flex flex-col items-center gap-6 mt-4"
               >
                 <div className="flex items-center gap-4">
                   <div className="h-px w-12 bg-brand-pink"></div>
@@ -223,12 +223,12 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Superior UX transition: Deeper blend and blur to body (500px height) */}
-          <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-surface via-surface/90 to-transparent z-20 pointer-events-none backdrop-blur-[1px]"></div>
+          {/* Superior UX transition: Adjusted height and z-index to not overlap content */}
+          <div className="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-t from-surface via-surface/90 to-transparent z-10 pointer-events-none"></div>
         </section>
 
         {/* Introduction Section (Who We Are) */}
-        <section className="py-32 bg-surface overflow-hidden border-b border-white/5 relative z-30">
+        <section className="pt-16 pb-32 bg-surface overflow-hidden border-b border-white/5 relative z-30">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-24 items-center">
               <motion.div
