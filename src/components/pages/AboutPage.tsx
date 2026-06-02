@@ -8,25 +8,25 @@ import { Target, Eye, ShieldCheck, Zap, TrendingUp, Users, Handshake, Mail, Shar
 
 const experts = [
   {
-    name: "Dr. Adebayo Williams",
+    name: "AKINTOBI ENITAN THOMPSON",
     role: "Chief Executive Officer",
     image: "/images/ceo.jpeg",
     bio: "Visionary leader with 25+ years in global logistics and industrial trade across African markets."
   },
   {
-    name: "Sarah Jenkins",
-    role: "Chief Operations Officer",
-    image: "/images/team-3.jpeg",
+    name: "Taiwo Ogunmoyin",
+    role: "Chief Operating Officer",
+    image: "/images/taiwo-ogunmoyin.jpg",
     bio: "Supply chain expert specialized in optimizing multinational procurement and distribution networks."
   },
   {
-    name: "Oluwaseun Bakare",
+    name: "OLUWASEUN DAYO OGUNMOYIN",
     role: "Director of Global Partnerships",
-    image: "/images/team-1.jpeg",
+    image: "/images/team-3.jpeg",
     bio: "Strategist focused on bridging Nigerian industrial opportunities with international investor standards."
   },
   {
-    name: "Marcus Thorne",
+    name: "Williams Abayomi Emeahara",
     role: "Head of Industrial Sourcing",
     image: "/images/team-2.jpeg",
     bio: "Specialist in heavy machinery procurement and European-African manufacturing representation."

@@ -99,7 +99,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-sm mb-1 uppercase tracking-widest">Phone</h4>
-                        <p className="text-on-surface-variant text-sm">+234 (0) 123 456 7890</p>
+                        <p className="text-on-surface-variant text-sm">+234 703 866 1947</p>
                       </div>
                     </div>
 
@@ -109,7 +109,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-sm mb-1 uppercase tracking-widest">Headquarters</h4>
-                        <p className="text-on-surface-variant text-sm">Adetokunbo Ademola Street, Victoria Island, Lagos</p>
+                        <p className="text-on-surface-variant text-sm">39, Alfred Rewane Road, Ikoyi, Lagos</p>
                       </div>
                     </div>
 
