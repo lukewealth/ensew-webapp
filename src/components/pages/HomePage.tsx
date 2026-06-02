@@ -185,9 +185,21 @@ const HomePage = () => {
                 </div>
               </motion.div>
               
+              <motion.div 
+                variants={fadeInUp}
+                className="flex items-center justify-center mb-12"
+              >
+                <Link 
+                  href="/track" 
+                  className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 group shadow-2xl transition-all duration-300 hover:scale-[1.05] hover:-translate-y-1 active:scale-95"
+                >
+                  Track Your Shipment <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+
               <motion.div
                 variants={fadeInUp}
-                className="flex flex-col items-center gap-6 mb-12"
+                className="flex flex-col items-center gap-6"
               >
                 <div className="flex items-center gap-4">
                   <div className="h-px w-12 bg-brand-pink"></div>
@@ -197,22 +209,13 @@ const HomePage = () => {
                   <div className="h-px w-12 bg-brand-blue"></div>
                 </div>
               </motion.div>
-              
-              <motion.div 
-                variants={fadeInUp}
-                className="flex items-center justify-center"
-              >
-                <Link 
-                  href="/track" 
-                  className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 group shadow-2xl transition-all duration-300 hover:scale-[1.05] hover:-translate-y-1 active:scale-95"
-                >
-                  Track Your Shipment <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
             </motion.div>
           </div>
 
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
+          {/* Smooth transition blend to body */}
+          <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-surface via-surface/80 to-transparent z-20 pointer-events-none"></div>
+
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
              <motion.button 
                onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" })}
                animate={{ y: [0, 10, 0] }} 
