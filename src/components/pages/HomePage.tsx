@@ -187,7 +187,7 @@ const HomePage = () => {
               
               <motion.div 
                 variants={fadeInUp}
-                className="flex items-center justify-center mb-12"
+                className="flex items-center justify-center mb-16"
               >
                 <Link 
                   href="/track" 
@@ -199,7 +199,7 @@ const HomePage = () => {
 
               <motion.div
                 variants={fadeInUp}
-                className="flex flex-col items-center gap-6"
+                className="flex flex-col items-center gap-6 mt-4"
               >
                 <div className="flex items-center gap-4">
                   <div className="h-px w-12 bg-brand-pink"></div>
@@ -212,10 +212,10 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Smooth transition blend to body */}
-          <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-surface via-surface/80 to-transparent z-20 pointer-events-none"></div>
+          {/* Smooth transition blend to body - refined height and opacity */}
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface via-surface/60 to-transparent z-20 pointer-events-none"></div>
 
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
              <motion.button 
                onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" })}
                animate={{ y: [0, 10, 0] }} 
