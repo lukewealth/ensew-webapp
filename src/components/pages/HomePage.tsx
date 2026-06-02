@@ -133,7 +133,7 @@ const HomePage = () => {
           </div>
 
           {/* Added pt-48 to move content downwards (approx 3x based on standard spacing) */}
-          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-48">
+          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-64 pb-32">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -167,7 +167,7 @@ const HomePage = () => {
               <motion.div
                 animate={{ opacity: typewriterFinished ? 0.6 : 1 }}
                 transition={{ duration: 1 }}
-                className="min-h-[2rem] mb-12"
+                className="min-h-[2rem] mb-16"
               >
                 <div className="relative flex justify-center items-center overflow-hidden">
                   <AnimatePresence mode="wait">
@@ -187,7 +187,7 @@ const HomePage = () => {
               
               <motion.div 
                 variants={fadeInUp}
-                className="flex items-center justify-center mb-16"
+                className="flex items-center justify-center mb-32"
               >
                 <Link 
                   href="/track" 
@@ -199,7 +199,7 @@ const HomePage = () => {
 
               <motion.div
                 variants={fadeInUp}
-                className="flex flex-col items-center gap-6 mt-4"
+                className="flex flex-col items-center gap-6 mt-8"
               >
                 <div className="flex items-center gap-4">
                   <div className="h-px w-12 bg-brand-pink"></div>
@@ -212,8 +212,8 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Smooth transition blend to body - refined height and opacity */}
-          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface via-surface/60 to-transparent z-20 pointer-events-none"></div>
+          {/* Superior UX transition: 2X deeper blend and blur to body */}
+          <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-surface via-surface/80 to-transparent z-20 pointer-events-none backdrop-blur-[1px]"></div>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
              <motion.button 
