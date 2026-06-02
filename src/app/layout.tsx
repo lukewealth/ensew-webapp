@@ -103,6 +103,13 @@ export default function RootLayout({
           {`
             (function() {
               try {
+                // One-time cache/cookie clear for new logo deployment
+                if (!localStorage.getItem('ensew_v2_deployed')) {
+                  localStorage.removeItem('ensew_cookie_consent');
+                  localStorage.removeItem('ensew_visited');
+                  localStorage.setItem('ensew_v2_deployed', 'true');
+                }
+
                 const visited = localStorage.getItem('ensew_visited');
                 if (visited) {
                   document.documentElement.classList.add('returning-visitor');
