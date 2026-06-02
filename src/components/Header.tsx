@@ -1,131 +1,117 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Globe, Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
-const Footer = () => {
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { 
+    name: "Solutions", 
+    href: "/services", 
+    dropdown: [
+      { name: "Import & Export", href: "/services#import-export" },
+      { name: "Industrial Supply", href: "/services#industrial" },
+      { name: "Logistics", href: "/services#logistics" }
+    ] 
+  },
+  { 
+    name: "Industries", 
+    href: "/industries",
+    dropdown: [
+      { name: "Oil & Gas", href: "/industries#oil-gas" },
+      { name: "Manufacturing", href: "/industries#manufacturing" },
+      { name: "Construction", href: "/industries#construction" }
+    ]
+  },
+  { name: "Projects", href: "/projects" },
+];
+
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setMobileDropdownOpen(null);
+  };
+
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+    setMobileDropdownOpen(null);
+    setActiveDropdown(null);
+  };
+
   return (
-    <footer className="w-full py-16 px-6 md:px-12 bg-surface-dim border-t border-white/10 mt-auto">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
-        <Link href="/" className="flex flex-col items-center gap-4">
-          <img src="/images/logo%20ensew.png" alt="ENSEW Logo" className="h-16 w-auto rounded-lg" />
-        </Link>
-        
-        <div className="flex flex-wrap justify-center gap-8 text-xs font-poppins tracking-widest uppercase">
-          <Link href="/privacy" className="text-on-surface-variant hover:text-on-surface transition-colors">
-            Privacy Policy
-          </Link>
-          <Link href="/terms" className="text-on-surface-variant hover:text-on-surface transition-colors">
-            Terms of Service
-          </Link>
-          <Link href="/cookies" className="text-on-surface-variant hover:text-on-surface transition-colors">
-            Cookie Policy
-          </Link>
-          <Link href="/sitemap" className="text-on-surface-variant hover:text-on-surface transition-colors">
-            Global Sitemap
-          </Link>
-        </div>
-
-        <div className="text-sm font-inter text-on-surface-variant text-center opacity-80 max-w-2xl">
-          © {new Date().getFullYear()} ENSEW Services Limited. All rights reserved.
-          <br />
-          Building Global Business Connections Through Smart Industrial Solutions.
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;
-ia", "Business Solutions Nigeria"],
-  authors: [{ name: "ENSEW Services Limited" }],
-  creator: "ENSEW Services Limited",
-  publisher: "ENSEW Services Limited",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  icons: {
-    icon: "/images/logo%20ensew.png",
-    apple: "/images/logo%20ensew.png",
-    shortcut: "/images/logo%20ensew.png",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://ensewservices.com",
-    siteName: "ENSEW Services Limited",
-    title: "ENSEW Services Limited | Global Industrial Solutions",
-    description: "Smart industrial solutions, logistics, and supply chain excellence across Nigeria and international markets.",
-    images: [
-      {
-        url: "/images/logo%20ensew.png",
-        width: 1200,
-        height: 630,
-        alt: "ENSEW Services Limited - Global Industrial Solutions",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ENSEW Services Limited | Global Industrial Solutions",
-    description: "Building Global Business Connections Through Smart Industrial Solutions.",
-    images: ["/images/logo%20ensew.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${montserrat.variable} ${inter.variable} ${poppins.variable} h-full antialiased`}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 transition-all duration-500 ease-in-out ${
+        isScrolled || isMobileMenuOpen
+          ? "nav-glassmorphism py-4"
+          : "bg-transparent py-6"
+      }`}
     >
-      <head>
-        <Script id="visitor-detection" strategy="beforeInteractive">
-          {`
-            (function() {
-              try {
-                const visited = localStorage.getItem('ensew_visited');
-                if (visited) {
-                  document.documentElement.classList.add('returning-visitor');
-                }
-                localStorage.setItem('ensew_visited', 'true');
-              } catch (e) {}
-            })();
-          `}
-        </Script>
-      </head>
-      <body className="bg-background text-on-surface font-inter min-h-full flex flex-col transition-colors duration-300">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ScrollProgress />
-          {children}
-          <CookieConsent />
-        </ThemeProvider>
-      </body>
-    </html>
-  );
-}
-{{ opacity: 1, y: 0 }}
+      <div className="flex items-center gap-4 relative z-[60]">
+        <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick}>
+          <img src="/images/logo%20ensew.png" alt="ENSEW Logo" className="h-20 w-auto rounded hover:scale-105 transition-transform" />
+        </Link>
+      </div>
+
+      {/* Desktop Nav */}
+      <nav className="hidden lg:flex gap-10 items-center">
+        {navLinks.map((link) => (
+          <div 
+            key={link.name} 
+            className="relative py-2"
+            onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
+            onMouseLeave={() => setActiveDropdown(null)}
+          >
+            <Link
+              href={link.href}
+              className={`font-poppins text-[10px] tracking-[0.2em] uppercase transition-all duration-300 flex items-center gap-1.5 ${
+                pathname === link.href 
+                  ? "text-gold" 
+                  : (isScrolled ? "text-white/80 hover:text-gold" : "text-white hover:text-gold")
+              }`}
+              onClick={handleLinkClick}
+            >
+              {link.name}
+              {link.dropdown && (
+                <ChevronDown 
+                  size={10} 
+                  className={`transition-transform duration-300 ${activeDropdown === link.name ? "rotate-180" : ""}`} 
+                />
+              )}
+              <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gold transition-transform duration-300 origin-left ${pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}></span>
+            </Link>
+
+            <AnimatePresence>
+              {link.dropdown && activeDropdown === link.name && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="absolute left-0 top-full pt-4"
