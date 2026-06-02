@@ -105,7 +105,7 @@ const TrackPage = () => {
                 disabled={isSearching}
                 className="gold-button text-navy px-12 py-5 rounded-xl font-montserrat font-black uppercase tracking-widest flex items-center justify-center gap-3 shadow-2xl shadow-gold/20 active:scale-95 transition-all"
               >
-                {isSearching ? <Loader2 className="animate-spin" /> : "Initiate Audit"}
+                {isSearching ? <Loader2 className="animate-spin" /> : "Track"}
               </button>
             </form>
             {error && <p className="mt-6 text-red-400 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2">
