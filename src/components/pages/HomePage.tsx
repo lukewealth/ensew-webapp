@@ -45,7 +45,7 @@ const Typewriter = ({ text, delay = 0, speed = 0.05, className = "" }: { text: s
 const HomePage = () => {
   const [typewriterFinished, setTypewriterFinished] = React.useState(false);
   const [rotatingTextIndex, setRotatingTextIndex] = React.useState(0);
-  
+
   const infoTexts = React.useMemo(() => [
     "Optimizing International Trade Routes",
     "Advanced Logistics & Supply Systems",
@@ -99,21 +99,21 @@ const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-industrial-grid">
       <Header />
-      
+
       <main>
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-navy">
+        <section className="relative min-h-[110vh] flex items-center justify-center overflow-hidden bg-navy">
           <div className="absolute inset-0 z-0">
             {/* Primary Background Layer */}
             <div className="absolute inset-0 bg-[#020B1C] z-0"></div>
-            
+
             {/* Seamless Gradient Overlays */}
             <div className="absolute inset-0 hero-seamless-overlay z-10 opacity-90"></div>
-            
+
             {/* Ambient Blue Glows */}
             <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-electric-blue/10 blur-[120px] rounded-full z-5 animate-pulse"></div>
             <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-navy-light/20 blur-[150px] rounded-full z-5"></div>
-            
+
             {/* Cinematic Vignette */}
             <div className="absolute inset-0 bg-radial-vignette z-15 pointer-events-none"></div>
 
@@ -132,8 +132,8 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Added pt-48 to move content downwards (approx 3x based on standard spacing) */}
-          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-64 pb-32">
+          {/* Increased pt to push content lower and added pb for bottom spacing balance */}
+          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center pt-64 pb-48">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -184,22 +184,33 @@ const HomePage = () => {
                   </AnimatePresence>
                 </div>
               </motion.div>
-              
+
               <motion.div 
                 variants={fadeInUp}
-                className="flex items-center justify-center mb-32"
+                className="flex flex-col items-center justify-center mb-64"
               >
                 <Link 
                   href="/track" 
-                  className="gold-button px-12 py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase flex items-center gap-3 group shadow-2xl transition-all duration-300 hover:scale-[1.05] hover:-translate-y-1 active:scale-95"
+                  className="gold-button px-16 py-6 text-navy font-poppins font-black text-lg tracking-[0.2em] rounded-2xl uppercase flex items-center gap-4 group shadow-[0_20px_50px_rgba(212,175,55,0.3)] hover:shadow-[0_25px_60px_rgba(212,175,55,0.4)] transition-all duration-500 hover:scale-[1.08] hover:-translate-y-2 active:scale-95 border-2 border-gold/50"
                 >
-                  Track Your Shipment <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  Track Your Shipment <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform duration-500" />
                 </Link>
+
+                {/* Anchor arrow icon moved directly under the button */}
+                <motion.button 
+                   onClick={() => window.scrollTo({ top: document.documentElement.clientHeight * 1.1, behavior: "smooth" })}
+                   animate={{ y: [0, 15, 0] }} 
+                   transition={{ repeat: Infinity, duration: 2 }}
+                   className="mt-12 text-gold/60 hover:text-gold transition-all cursor-pointer group"
+                   aria-label="Scroll Down"
+                 >
+                   <ChevronRight size={48} className="rotate-90 group-hover:scale-110 transition-transform" />
+                 </motion.button>
               </motion.div>
 
               <motion.div
                 variants={fadeInUp}
-                className="flex flex-col items-center gap-6 mt-8"
+                className="flex flex-col items-center gap-6 mt-12"
               >
                 <div className="flex items-center gap-4">
                   <div className="h-px w-12 bg-brand-pink"></div>
@@ -212,24 +223,12 @@ const HomePage = () => {
             </motion.div>
           </div>
 
-          {/* Superior UX transition: 2X deeper blend and blur to body */}
-          <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-surface via-surface/80 to-transparent z-20 pointer-events-none backdrop-blur-[1px]"></div>
-
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
-             <motion.button 
-               onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" })}
-               animate={{ y: [0, 10, 0] }} 
-               transition={{ repeat: Infinity, duration: 2 }}
-               className="text-white/30 hover:text-gold transition-colors cursor-pointer"
-               aria-label="Scroll Down"
-             >
-               <ChevronRight size={40} className="rotate-90" />
-             </motion.button>
-          </div>
+          {/* Superior UX transition: Significantly deeper blend and blur to body (700px height) */}
+          <div className="absolute bottom-0 left-0 w-full h-[700px] bg-gradient-to-t from-surface via-surface/90 to-transparent z-20 pointer-events-none backdrop-blur-[2px]"></div>
         </section>
 
         {/* Introduction Section (Who We Are) */}
-        <section className="py-32 bg-surface overflow-hidden border-b border-white/5">
+        <section className="py-32 bg-surface overflow-hidden border-b border-white/5 relative z-30">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-24 items-center">
               <motion.div
@@ -360,7 +359,7 @@ const HomePage = () => {
               >
                 <span className="text-gold font-poppins text-xs font-bold uppercase tracking-[0.4em] block mb-4">DNA</span>
                 <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold text-white uppercase tracking-tight mb-12">Why Businesses Trust ENSEW</h2>
-                
+
                 <ul className="space-y-10 mb-12">
                   {[
                     { title: "Unmatched Reliability", desc: "We maintain a 99.8% on-time completion rate for all industrial contracts and supply chains." },
@@ -469,7 +468,7 @@ const HomePage = () => {
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gold/50 blur-[150px] rounded-full"></div>
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-electric-blue/50 blur-[150px] rounded-full"></div>
           </div>
-          
+
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-7xl font-montserrat font-extrabold text-white mb-10 tracking-tight uppercase leading-none">
               Ready To Scale Your <span className="text-gold">Business</span> Operations?
@@ -495,3 +494,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
