@@ -10,8 +10,8 @@ const experts = [
   {
     name: "AKINTOBI ENITAN THOMPSON",
     role: "Chief Executive Officer",
-    image: "/images/ceo.jpeg",
-    bio: "Visionary leader with 25+ years in global logistics and industrial trade across African markets."
+    image: "/images/AKINTOBI ENITAN THOMPSON.png",
+    bio: "Visionary leader with 5+ years in global logistics and industrial trade across African markets."
   },
   {
     name: "Taiwo Ogunmoyin",
@@ -22,14 +22,15 @@ const experts = [
   {
     name: "OLUWASEUN DAYO OGUNMOYIN",
     role: "Director of Global Partnerships",
-    image: "/images/team-3.jpeg",
+    image: "/images/OLUWASEUN DAYO OGUNMOYIN.png",
     bio: "Strategist focused on bridging Nigerian industrial opportunities with international investor standards."
   },
   {
     name: "Williams Abayomi Emeahara",
     role: "Head of Industrial Sourcing",
     image: "/images/team-2.jpeg",
-    bio: "Specialist in heavy machinery procurement and European-African manufacturing representation."
+    bio: "Specialist in heavy machinery procurement and European-African manufacturing representation.",
+    position: "center center"
   }
 ];
 
@@ -97,7 +98,7 @@ const AboutPage = () => {
                 className="rounded-[2.2rem] w-full h-[500px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute -bottom-8 -right-8 glass-card p-8 rounded-2xl hidden lg:block">
-                <div className="text-3xl font-montserrat font-bold text-gold">25+</div>
+                <div className="text-3xl font-montserrat font-bold text-gold">5+</div>
                 <div className="text-[10px] font-poppins font-bold tracking-widest text-white uppercase">Years Excellence</div>
               </div>
             </motion.div>
@@ -149,7 +150,7 @@ const AboutPage = () => {
                 <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-white tracking-tight">Meet Our Professional <span className="text-gold">Experts.</span></h2>
               </div>
               <p className="text-on-surface-variant max-w-sm font-inter">
-                Our leadership team brings together decades of international experience across Africa and the global industrial landscape.
+                Our leadership team brings together years of international experience across Africa and the global industrial landscape.
               </p>
             </div>
 
@@ -168,6 +169,7 @@ const AboutPage = () => {
                       src={expert.image}
                       alt={expert.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                      style={{ objectPosition: (expert as any).position || 'center' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                     <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

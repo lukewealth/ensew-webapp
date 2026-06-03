@@ -89,6 +89,24 @@ const industries = [
     challenges: "Navigating ECOWAS trade protocols and customs barriers.",
     solutions: "Manufacturing representation and strategic trade consulting.",
     source: "https://wto.org/english/res_e/publications_e/world_trade_report23_e.htm"
+  },
+  { 
+    name: "Education", 
+    icon: Wheat, 
+    image: "https://images.unsplash.com/photo-1523050853051-f7539315ef21?auto=format&fit=crop&q=80&w=800",
+    details: "Supporting educational infrastructure and specialized procurement for institutions.",
+    challenges: "Outdated equipment and supply chain inefficiencies in learning centers.",
+    solutions: "Modern laboratory equipment sourcing and digital learning integration.",
+    source: "https://www.unesco.org/en/education/higher-education/global-convention"
+  },
+  { 
+    name: "Music Investment", 
+    icon: Zap, 
+    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800",
+    details: "Strategic capital and infrastructure for the global music and entertainment industry.",
+    challenges: "Fragmented royalty systems and lack of high-tier production facilities.",
+    solutions: "Studio infrastructure development and strategic distribution partnerships.",
+    source: "https://www.ifpi.org/resources-and-reports/global-music-report/"
   }
 ];
 

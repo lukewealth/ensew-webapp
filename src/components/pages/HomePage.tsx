@@ -18,7 +18,9 @@ import {
   ShieldAlert,
   Handshake,
   BarChart3,
-  ArrowRight
+  ArrowRight,
+  GraduationCap,
+  Music
 } from "lucide-react";
 
 const Typewriter = ({ text, delay = 0, speed = 0.05, className = "" }: { text: string, delay?: number, speed?: number, className?: string }) => {
@@ -329,8 +331,8 @@ const HomePage = () => {
            <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
               {[
-                { val: "500+", label: "PROJECTS COMPLETED" },
-                { val: "100+", label: "GLOBAL PARTNERS" },
+                { val: "25", label: "PROJECTS COMPLETED" },
+                { val: "5", label: "GLOBAL PARTNERS" },
                 { val: "24/7", label: "OPERATIONAL SUPPORT" },
                 { val: "15+", label: "INDUSTRIES SERVED" }
               ].map((stat, i) => (
@@ -415,7 +417,7 @@ const HomePage = () => {
             <p className="text-lg text-on-surface-variant max-w-2xl mx-auto mt-6">Tailored expertise for the world&apos;s most demanding sectors.</p>
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[700px]">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 lg:grid-rows-3 gap-6 h-auto md:h-[900px]">
             <Link href="/industries" className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10">
               <img 
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Mu5GSfmxEd4NAx5ustmwyb9OIi82HlYogJPg37ldTTRRkKRA6BQHYOmTdFN7yWexDwdrrBAT1QsbwhoVBeHNrGNfNp4Om_8eKFUS6slIeu58ny9a9gUvokbuZsFGn68ilbvNY3GD74ykV7YwGl9Lo-HJCcnery9wUMGOmDszmW9l1_9jrB3_DWtj0XncNdYDJi4eorVnMXVOL2ve77-kW7UgO-w8aWznSjXftRzFCFlJPj9nu4O__eqSlao2we1Or1TrtF2jfHPF" 
@@ -457,6 +459,28 @@ const HomePage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-12">
                 <h3 className="text-3xl font-montserrat font-bold text-white uppercase group-hover:text-gold transition-colors">Logistics & Supply</h3>
+              </div>
+            </Link>
+
+            <Link href="/industries" className="relative group overflow-hidden rounded-[2rem] border border-white/10">
+              <img 
+                src="https://images.unsplash.com/photo-1523050853051-f7539315ef21?auto=format&fit=crop&q=80&w=800" 
+                alt="Education" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+                <h3 className="text-xl font-montserrat font-bold text-white uppercase group-hover:text-gold transition-colors">Education</h3>
+              </div>
+            </Link>
+
+            <Link href="/industries" className="relative group overflow-hidden rounded-[2rem] border border-white/10">
+              <img 
+                src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800" 
+                alt="Music Investment" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+                <h3 className="text-xl font-montserrat font-bold text-white uppercase group-hover:text-gold transition-colors">Music Investment</h3>
               </div>
             </Link>
           </div>
