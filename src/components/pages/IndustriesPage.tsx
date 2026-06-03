@@ -37,7 +37,7 @@ const industries = [
     id: "pharma",
     name: "Pharmaceuticals", 
     icon: Settings, 
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDQY7h1PdbU7qUcRXqNB-kU3-07KNBKg59cjNhZ-fB3TV1m-VwnhBB6EKUHdWnnuSE8L9an-LHMGCpA9hscZGzeIidZHS_SLpDWB_bUSi-Bv28jivO0gvAWKU8AMnMzVadWaXKvxqYyHzx-VkBQu26Jg52yVKURC27A5Fzz51ItfTH8CWZEr__pBX8hMDrFpc7owKhYlzhK8RZ-YorWEj46sKr8QUFkaLTNtqeoyIzBt7FAMJ3NJ3Pnq6rL5nWtvkTDHJS7OnerPIa-",
+    image: "https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&q=80&w=1200",
     details: "Ensuring health integrity through rigorous cold-chain logistics and secure sourcing.",
     challenges: "Temperature-sensitive asset loss and anti-counterfeit compliance.",
     solutions: "IoT-monitored distribution networks and validated supply routes.",

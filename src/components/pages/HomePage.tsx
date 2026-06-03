@@ -93,7 +93,7 @@ const industries = [
     name: "Pharmaceuticals",
     label: "PHARMACEUTICALS",
     icon: Settings,
-    image: "https://images.unsplash.com/photo-1579165466541-7132242824aa?auto=format&fit=crop&q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&q=80&w=1200",
     desc: "Advanced biotech logistics and high-integrity medical supply chains."
   },
   {
