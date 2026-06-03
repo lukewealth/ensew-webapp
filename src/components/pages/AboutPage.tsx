@@ -30,7 +30,7 @@ const experts = [
     role: "Head of Industrial Sourcing",
     image: "/images/team-2.jpeg",
     bio: "Specialist in heavy machinery procurement and European-African manufacturing representation.",
-    position: "center center"
+    position: "center 10%"
   }
 ];
 
