@@ -121,6 +121,17 @@ const industries = [
 
 const HomePage = () => {
   const [typewriterFinished, setTypewriterFinished] = useState(false);
+
+  const [heroTextOpacity, setHeroTextOpacity] = useState(1);
+
+  // Fade out hero H1 text after 10 seconds
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => {
+      setHeroTextOpacity(0);
+    }, 10000);
+    return () => clearTimeout(fadeTimer);
+  }, []);
+
   const [rotatingTextIndex, setRotatingTextIndex] = useState(0);
   const [currentIndustry, setCurrentIndustry] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -220,7 +231,12 @@ const HomePage = () => {
                 </div>
               </motion.div>
 
-              <motion.h1 variants={fadeInUp} className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow uppercase">
+              <motion.h1 
+                variants={fadeInUp} 
+                animate={{ opacity: heroTextOpacity }} 
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="text-5xl md:text-8xl font-montserrat font-extrabold text-white mb-8 tracking-tighter leading-[0.9] text-glow uppercase"
+              >
                 <Typewriter text="Building Resilient" delay={1.2} speed={0.05} /> <br />
                 <Typewriter text="Supply Chain" delay={2.2} speed={0.05} className="brand-gradient-text" /> <br />
                 <Typewriter text="Solutions." delay={3.2} speed={0.05} />
