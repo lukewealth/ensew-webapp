@@ -23,7 +23,7 @@ const experts: Expert[] = [
   },
   {
     name: "OLUWASEUN DAYO OGUNMOYIN",
-    role: "Chief Operating Officer",
+    role: "Director of Global Partnerships",
     image: "/images/OLUWASEUN DAYO OGUNMOYIN.png",
     bio: "Strategist focused on bridging Nigerian industrial opportunities with international investor standards."
   },
@@ -100,11 +100,13 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="relative p-2 rounded-[2.5rem] border border-white/5 bg-gradient-to-br from-white/10 to-transparent"
             >
-              <img
-                src="/images/Site-view.png"
-                alt="Our Team"
-                className="rounded-[2.2rem] w-full h-[500px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-              />
+              <div className="overflow-hidden rounded-[2.2rem]">
+                <img
+                  src="/images/Site-view.png"
+                  alt="Our Team"
+                  className="w-full h-[500px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 scale-110"
+                />
+              </div>
               <div className="absolute -bottom-8 -right-8 glass-card p-8 rounded-2xl hidden lg:block">
                 <div className="text-3xl font-montserrat font-bold text-gold">5+</div>
                 <div className="text-[10px] font-poppins font-bold tracking-widest text-white uppercase">Years Excellence</div>
