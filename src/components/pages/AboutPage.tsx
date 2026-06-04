@@ -9,15 +9,9 @@ import { Target, Eye, ShieldCheck, Zap, TrendingUp, Users, Handshake, Mail, Shar
 const experts = [
   {
     name: "AKINTOBI ENITAN THOMPSON",
-    role: "Chief Executive Officer",
+    role: "Chief Operating Officer",
     image: "/images/AKINTOBI ENITAN THOMPSON.png",
     bio: "Visionary leader with 5+ years in global logistics and industrial trade across African markets."
-  },
-  {
-    name: "Taiwo Ogunmoyin",
-    role: "Project Manager",
-    image: "/images/taiwo-ogunmoyin.jpg",
-    bio: "Supply chain expert specialized in optimizing multinational procurement and distribution networks."
   },
   {
     name: "OLUWASEUN DAYO OGUNMOYIN",
@@ -31,6 +25,12 @@ const experts = [
     image: "/images/team-2.jpeg",
     bio: "Specialist in heavy machinery procurement and European-African manufacturing representation.",
     position: "center 10%"
+  },
+  {
+    name: "Taiwo Ogunmoyin",
+    role: "Project Manager",
+    image: "/images/taiwo-ogunmoyin.jpg",
+    bio: "Supply chain expert specialized in optimizing multinational procurement and distribution networks."
   }
 ];
 
