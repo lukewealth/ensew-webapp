@@ -57,7 +57,7 @@ const industries = [
     id: "construction",
     name: "Infrastructure", 
     icon: Construction, 
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1606666066486-677c05dcff5e?auto=format&fit=crop&q=80&w=800",
     details: "Building the physical foundation for regional economic growth.",
     challenges: "Multi-stakeholder synchronization and procurement delays.",
     solutions: "General contracting frameworks and synchronized supply chains.",
@@ -93,7 +93,7 @@ const industries = [
   { 
     name: "Education", 
     icon: Wheat, 
-    image: "https://images.unsplash.com/photo-1523050853051-f7539315ef21?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=800",
     details: "Supporting educational infrastructure and specialized procurement for institutions.",
     challenges: "Outdated equipment and supply chain inefficiencies in learning centers.",
     solutions: "Modern laboratory equipment sourcing and digital learning integration.",
