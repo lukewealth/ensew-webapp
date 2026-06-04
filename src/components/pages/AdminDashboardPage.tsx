@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, 
@@ -11,7 +11,6 @@ import {
   Bell, 
   Plus, 
   Search, 
-  Filter, 
   TrendingUp,
   BarChart3,
   Clock,
@@ -67,7 +66,7 @@ const AdminDashboardPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('Overview');
 
-  const fetchShipments = async () => {
+  const fetchShipments = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await fetch('/api/track?id=ENS-9844-XZ');
@@ -92,7 +91,7 @@ const AdminDashboardPage = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("ensew_admin_token");
@@ -100,8 +99,14 @@ const AdminDashboardPage = () => {
       window.location.href = "/admin/login";
       return;
     }
-    fetchShipments();
-  }, []);
+    
+    // Use setTimeout to move setState call out of the synchronous effect body
+    const timeoutId = setTimeout(() => {
+      fetchShipments();
+    }, 0);
+    
+    return () => clearTimeout(timeoutId);
+  }, [fetchShipments]);
 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,7 +115,7 @@ const AdminDashboardPage = () => {
     setIsSaving(true);
     try {
       const currentShipment = shipments.find(s => s.id === editingShipment.id);
-      let updatedEditing = { ...editingShipment };
+      const updatedEditing = { ...editingShipment };
       
       if (currentShipment && currentShipment.status !== editingShipment.status) {
         const newLog = {
