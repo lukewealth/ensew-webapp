@@ -505,9 +505,6 @@ const HomePage = () => {
               <Link href="/contact" className="w-full sm:w-auto gold-button px-10 md:px-12 py-4 md:py-5 text-navy font-poppins font-bold text-sm tracking-widest rounded-xl uppercase shadow-2xl shadow-gold/20 text-base md:text-lg">
                 Connect With An Expert
               </Link>
-              <Link href="/contact" className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 text-white font-poppins font-bold text-sm tracking-widest rounded-xl uppercase border border-white/10 hover:bg-white/5 transition-all">
-                Get In Touch
-              </Link>
             </div>
           </div>
         </section>
