@@ -15,14 +15,14 @@ const experts = [
   },
   {
     name: "Taiwo Ogunmoyin",
-    role: "Chief Operating Officer",
+    role: "Project Manager",
     image: "/images/taiwo-ogunmoyin.jpg",
     bio: "Supply chain expert specialized in optimizing multinational procurement and distribution networks."
   },
   {
     name: "OLUWASEUN DAYO OGUNMOYIN",
-    role: "Director of Global Partnerships",
-    image: "/images/OLUWASEUN DAYO OGUNMOYIN.png",
+    role: "Chief Operating Officer",
+    image: "/images/Site-view.png",
     bio: "Strategist focused on bridging Nigerian industrial opportunities with international investor standards."
   },
   {
