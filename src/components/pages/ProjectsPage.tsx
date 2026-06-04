@@ -71,7 +71,7 @@ const projects = [
     challenge: "Coordinating multi-vendor supplies for a major airport expansion.",
     solution: "General contracting and end-to-end supply chain synchronization.",
     results: "Project delivered 3 months ahead of schedule and under budget.",
-    image: "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1553531088-df340cf313a9?auto=format&fit=crop&q=80&w=800",
     fullDetails: {
       problem: "A Tier-1 airport construction project was stalled due to misaligned technical supplies and vendor communication gaps across three continents.",
       execution: "Assumed the lead role in supply chain synchronization, managing 15+ international vendors under a single technical contracting umbrella.",
