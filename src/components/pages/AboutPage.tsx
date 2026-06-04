@@ -6,7 +6,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Target, Eye, ShieldCheck, Zap, TrendingUp, Users, Handshake, Mail, Share2 } from "lucide-react";
 
-const experts = [
+interface Expert {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  position?: string;
+}
+
+const experts: Expert[] = [
   {
     name: "AKINTOBI ENITAN THOMPSON",
     role: "Chief Operating Officer",
@@ -169,7 +177,7 @@ const AboutPage = () => {
                       src={expert.image}
                       alt={expert.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                      style={{ objectPosition: (expert as any).position || 'center' }}
+                      style={{ objectPosition: expert.position || 'center' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                     <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

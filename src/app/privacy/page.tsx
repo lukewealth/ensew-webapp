@@ -30,7 +30,7 @@ export default function PrivacyPage() {
                   <Eye className="text-gold w-6 h-6" /> 1. Operational Overview
                 </h2>
                 <p>
-                  ENSEW Services Limited ("we", "our", or "us") operates at the intersection of industrial excellence and digital integration. 
+                  ENSEW Services Limited (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates at the intersection of industrial excellence and digital integration. 
                   This Privacy Policy outlines our commitment to the secure management of data collected through our global logistics terminal 
                   and enterprise website. We prioritize data sovereignty and regulatory compliance across all jurisdictions we serve, including 
                   Lagos, London, and Houston.
