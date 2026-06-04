@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import { Factory, Construction, Wheat, Zap, ShoppingCart, Truck, Settings, Globe, X, ExternalLink, ShieldCheck, Cpu } from "lucide-react";
 
 export const metadata = {
-  title: "Industries We Serve",
+  title: "Sectors We Serve",
   description: "Tailored industrial and logistics solutions for Manufacturing, Energy, Construction, Agriculture, and Retail Distribution sectors.",
 };
 
@@ -149,7 +149,7 @@ const IndustriesPage = () => {
               Sectors We <span className="text-gold">Empower</span>
             </motion.h1>
             <p className="text-lg text-on-surface-variant max-w-2xl mx-auto uppercase tracking-widest font-poppins text-xs font-bold bg-navy/60 inline-block px-4 py-2 rounded-full">
-              Tailored Expertise for the World&apos;s Most Demanding Industries
+              Industries We Empower and Serve
             </p>
           </div>
         </section>

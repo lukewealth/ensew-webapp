@@ -22,7 +22,7 @@ const experts = [
   {
     name: "OLUWASEUN DAYO OGUNMOYIN",
     role: "Chief Operating Officer",
-    image: "/images/Site-view.png",
+    image: "/images/OLUWASEUN DAYO OGUNMOYIN.png",
     bio: "Strategist focused on bridging Nigerian industrial opportunities with international investor standards."
   },
   {
@@ -93,7 +93,7 @@ const AboutPage = () => {
               className="relative p-2 rounded-[2.5rem] border border-white/5 bg-gradient-to-br from-white/10 to-transparent"
             >
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000"
+                src="/images/Site-view.png"
                 alt="Our Team"
                 className="rounded-[2.2rem] w-full h-[500px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
               />

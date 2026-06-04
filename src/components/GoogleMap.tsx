@@ -1,100 +1,42 @@
 "use client";
 
-import React, { useState } from 'react';
-import {
-  APIProvider,
-  Map,
-  AdvancedMarker,
-  Pin,
-  InfoWindow,
-} from '@vis.gl/react-google-maps';
-
-const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
-
-const HEADQUARTERS = { lat: 6.4281, lng: 3.4219 }; // Victoria Island, Lagos, Nigeria
-
-const mapStyles = [
-  { elementType: "geometry", stylers: [{ color: "#061A40" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#061A40" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#D4AF37" }] },
-  {
-    featureType: "administrative.locality",
-    elementType: "labels.text.fill",
-    stylers: [{ color: "#D4AF37" }],
-  },
-  {
-    featureType: "poi",
-    elementType: "labels.text.fill",
-    stylers: [{ color: "#D4AF37" }],
-  },
-  {
-    featureType: "poi.park",
-    elementType: "geometry",
-    stylers: [{ color: "#0A2A66" }],
-  },
-  {
-    featureType: "road",
-    elementType: "geometry",
-    stylers: [{ color: "#1E2F56" }],
-  },
-  {
-    featureType: "road",
-    elementType: "geometry.stroke",
-    stylers: [{ color: "#061A40" }],
-  },
-  {
-    featureType: "water",
-    elementType: "geometry",
-    stylers: [{ color: "#00B4FF" }],
-  },
-];
+import React from 'react';
+import { MapPin } from 'lucide-react';
 
 const GoogleMapComponent = () => {
-  const [open, setOpen] = useState(false);
+  // Hardcoded coordinates for ENSEW Services Limited
+  // Address: 39, Alfred Rewane Road, Ikoyi, Lagos, Nigeria
+  const latitude = 6.4281;
+  const longitude = 3.4219;
+  const zoomLevel = 15;
 
-  if (!API_KEY) {
-    return (
-      <div className="w-full h-full flex items-center justify-center bg-navy text-gold font-montserrat p-4 text-center min-h-[400px]">
-        Please set NEXT_PUBLIC_GOOGLE_MAPS_API_KEY in your environment variables.
-      </div>
-    );
-  }
+  // Create an embedded map URL using OpenStreetMap's static map service
+  const mapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=${zoomLevel}&size=800x400&markers=color:gold%7C${latitude},${longitude}&style=element:geometry%7Ccolor:0x061a40&style=element:labels.text.fill%7Ccolor:0xd4af37&key=hardcoded`;
 
   return (
-    <div className="w-full h-full min-h-[400px]">
-      <APIProvider apiKey={API_KEY}>
-        <Map
-          defaultCenter={HEADQUARTERS}
-          defaultZoom={13}
-          mapId="ENSEW_MAP"
-          gestureHandling="greedy"
-          disableDefaultUI={false}
-          styles={mapStyles}
-        >
-          <AdvancedMarker
-            position={HEADQUARTERS}
-            onClick={() => setOpen(true)}
-          >
-            <Pin
-              background={'#D4AF37'}
-              glyphColor={'#061A40'}
-              borderColor={'#061A40'}
-            />
-          </AdvancedMarker>
-
-          {open && (
-            <InfoWindow
-              position={HEADQUARTERS}
-              onCloseClick={() => setOpen(false)}
-            >
-              <div className="p-2 text-navy">
-                <h3 className="font-bold text-navy">ENSEW Services Limited</h3>
-                <p className="text-sm text-navy">Headquarters, Lagos, Nigeria</p>
-              </div>
-            </InfoWindow>
-          )}
-        </Map>
-      </APIProvider>
+    <div className="w-full h-full min-h-[400px] rounded-2xl overflow-hidden border border-white/10">
+      {/* Fallback to static map with OpenStreetMap tiles */}
+      <div className="w-full h-full relative bg-navy flex items-center justify-center">
+        <iframe
+          width="100%"
+          height="100%"
+          style={{ border: 'none', minHeight: '400px' }}
+          src={`https://www.openstreetmap.org/export/embed.html?bbox=${longitude - 0.01},${latitude - 0.01},${longitude + 0.01},${latitude + 0.01}&layer=mapnik&marker=${latitude},${longitude}`}
+          title="ENSEW Services Limited Location"
+        />
+        
+        {/* Overlay information card */}
+        <div className="absolute bottom-4 left-4 bg-navy/95 backdrop-blur-sm p-4 rounded-xl border border-white/20 max-w-xs z-10">
+          <div className="flex gap-3 items-start">
+            <MapPin className="text-gold w-5 h-5 mt-1 flex-shrink-0" />
+            <div>
+              <h3 className="text-white font-bold text-sm uppercase tracking-widest">ENSEW Services Limited</h3>
+              <p className="text-on-surface-variant text-xs mt-2">39, Alfred Rewane Road, Ikoyi, Lagos, Nigeria</p>
+              <p className="text-on-surface-variant text-xs mt-1">📍 6.4281°N, 3.4219°E</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -20,7 +20,7 @@ const navLinks = [
     ] 
   },
   { 
-    name: "Industries", 
+    name: "Sectors", 
     href: "/industries",
     dropdown: [
       { name: "Oil & Gas", href: "/industries#oil-gas" },
